@@ -177,10 +177,37 @@
 
         @media (max-width: 900px) {
             .story-layout { grid-template-columns: 1fr; }
-            .timeline::before { left: 20px; }
-            .timeline-item { grid-template-columns: 40px 1fr; gap: 1.5rem; }
-            .tl-left { display: none; }
-            .tl-center { justify-content: flex-start; }
+            .timeline::before { 
+        left: 20px; /* Moves the vertical line to the left */
+    }
+            .timeline-item { 
+        /* Change grid to 2 columns: line space and content space */
+        grid-template-columns: 40px 1fr; 
+        gap: 1rem; 
+        margin-bottom: 2.5rem;
+    }
+            /* FIX: Show the left side content and align it to the left */
+    .tl-left { 
+        display: block !important; /* Forces it to show */
+        text-align: left !important; 
+        padding-right: 0 !important;
+        grid-column: 2; /* Moves it into the main content column */
+        margin-bottom: 0.5rem; /* Space between year and text */
+    }
+            .tl-right { 
+        padding-left: 0 !important; 
+        grid-column: 2; /* Moves it into the main content column */
+    }
+            .tl-center { 
+        justify-content: flex-start; 
+        grid-column: 1; /* Keeps the dot on the vertical line */
+        grid-row: 1 / span 2; /* Allows dot to sit next to multiple rows of text */
+        align-items: flex-start;
+        padding-top: 5px;
+    }
+            .tl-year { 
+        font-size: 1.4rem; /* Slightly smaller for mobile */
+    }
             .process-grid { grid-template-columns: 1fr 1fr; }
             .process-step::after { display: none; }
             .kanchi-grid { grid-template-columns: 1fr; }
