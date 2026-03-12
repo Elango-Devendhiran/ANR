@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wholesale | ANR Silks & Shirts Kanchipuram</title>
+    <meta name="description" content="ANR Silks wholesale — direct manufacturer pricing for bulk silk shirts, dhotis, and vesti. Pan-India shipping. Silk Mark certified. Call +91 94433 29558.">
+    <link rel="stylesheet" href="../shared.css">
+    <style>
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .reveal.revealed { opacity: 1; transform: translateY(0); }
+        .reveal-d1 { transition-delay: 0.1s; }
+        .reveal-d2 { transition-delay: 0.2s; }
+        .reveal-d3 { transition-delay: 0.3s; }
+
+        /* ── Wholesale Hero Banner (Centered like collection/heritage) ── */
+        .wholesale-hero-wrap {
+            margin-top: var(--nav-h);
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/banner_w.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 2rem 5%;
+        }
+
+        .wholesale-hero-wrap .page-hero {
+            background: transparent;
+            max-width: 850px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wholesale-hero-wrap h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            color: #fff;
+            margin: 0.5rem 0;
+            line-height: 1.1;
+        }
+
+        .wholesale-hero-wrap h1 em {
+            font-style: italic;
+            color: var(--gold-pale);
+        }
+
+        .wholesale-hero-wrap p {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+
+        .wholesale-hero-wrap .breadcrumb a, 
+        .wholesale-hero-wrap .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+        }
+
+        /* ── Benefits ── */
+        .benefits-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+        }
+        .benefit-card {
+            background: var(--ivory); border: 1px solid var(--sand-light);
+            border-radius: var(--radius); padding: 2rem;
+            border-top: 3px solid var(--gold);
+            transition: box-shadow 0.3s;
+        }
+        .benefit-card:hover { box-shadow: var(--shadow-md); }
+        .benefit-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .benefit-title { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--text-dark); margin-bottom: 0.5rem; }
+        .benefit-text { font-size: 0.82rem; color: var(--text-light); line-height: 1.7; }
+
+        /* ── How it works ── */
+        .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .step-card {
+            text-align: center; padding: 2rem 1.5rem;
+            background: var(--cream); border-radius: var(--radius);
+            position: relative;
+        }
+        .step-card:not(:last-child)::after {
+            content: '→';
+            position: absolute; right: -1rem; top: 2.5rem;
+            color: var(--gold); font-size: 1.2rem;
+        }
+        .step-num {
+            width: 44px; height: 44px; background: var(--maroon);
+            color: #fff; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center;
+            font-family: 'DM Serif Display', serif; font-size: 1.1rem;
+            margin: 0 auto 1rem; font-style: italic;
+        }
+        .step-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+        .step-title { font-size: 0.8rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.4rem; }
+        .step-text { font-size: 0.75rem; color: var(--text-light); line-height: 1.6; }
+
+        /* ── Products available (Updated with Img Support) ── */
+        .wholesale-products {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+        }
+        .wp-card {
+            background: var(--cream); border-radius: var(--radius); overflow: hidden;
+        }
+        .wp-img {
+            aspect-ratio: 4/3;
+            background: var(--sand-light);
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .wp-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .wp-body { padding: 1.2rem 1.5rem 1.5rem; }
+        .wp-name { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--text-dark); margin-bottom: 0.4rem; }
+        .wp-details { font-size: 0.8rem; color: var(--text-light); line-height: 1.6; }
+        .wp-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+        .wp-chip {
+            font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+            background: var(--ivory); border: 1px solid var(--sand);
+            color: var(--text-mid); padding: 0.25rem 0.7rem; border-radius: 100px;
+        }
+
+        /* ── Enquiry form & Testimonials (Restored from your code) ── */
+        .enq-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+        .enq-info-card { background: var(--cream); border: 1px solid var(--sand); border-radius: var(--radius); padding: 2rem; margin-top: 2rem; }
+        .ei-row { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.2rem; }
+        .ei-icon { font-size: 1.2rem; flex-shrink: 0; }
+        .ei-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.2rem; }
+        .ei-val { font-size: 0.88rem; color: var(--text-dark); line-height: 1.5; }
+        .ei-val a { color: var(--terracotta); font-weight: 600; text-decoration: none; }
+
+        .enq-form { background: var(--ivory); border: 1px solid var(--sand); border-radius: var(--radius); padding: 2.5rem; }
+        .enq-form h3 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--text-dark); margin-bottom: 1.8rem; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .form-field { margin-bottom: 1.2rem; }
+        .form-field label { display: block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.45rem; }
+        .form-field input, .form-field select, .form-field textarea {
+            width: 100%; border: 1.5px solid var(--sand); background: var(--cream); border-radius: var(--radius); padding: 0.75rem 1rem;
+            color: var(--text-dark); font-family: 'DM Sans', sans-serif; font-size: 0.88rem; outline: none; transition: border-color 0.3s;
+        }
+        .btn-submit {
+            display: block; width: 100%; background: var(--terracotta); color: #fff; border: none; font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.2em; text-transform: uppercase; padding: 1.1rem; border-radius: var(--radius); cursor: pointer; text-align: center; text-decoration: none;
+        }
+
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .testi-card { background: var(--cream); border-radius: var(--radius); padding: 1.8rem; border-left: 3px solid var(--gold); }
+        .testi-quote { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 0.9rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 1rem; }
+        .testi-author { font-size: 0.7rem; font-weight: 700; color: var(--text-dark); }
+
+        @media (max-width: 900px) {
+            .benefits-grid, .steps-grid, .wholesale-products, .testimonials-grid { grid-template-columns: 1fr 1fr; }
+            .enq-layout { grid-template-columns: 1fr; }
+            .step-card::after { display: none; }
+        }
+        @media (max-width: 600px) {
+            .benefits-grid, .wholesale-products, .form-row, .steps-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <a href="../index.html" class="nav-brand">
+        <div class="nav-emblem">A</div>
+        <div class="nav-brand-text">
+            <span class="nav-brand-name">ANR Silks & Shirts</span>
+            <span class="nav-brand-sub">Kanchipuram — Est. 2011</span>
+        </div>
+    </a>
+    <nav class="site-nav">
+    <a href="../index.html" class="nav-brand">
+        <div class="nav-emblem">A</div>
+        <div class="nav-brand-text">
+            <span class="nav-brand-name">ANR Silks & Shirts</span>
+            <span class="nav-brand-sub">Kanchipuram — Est. 2011</span>
+        </div>
+    </a>
+
+    <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="collection.html">Collection</a>
+        <a href="heritage.html">Heritage</a>
+        <a href="wholesale.html" class="active">Wholesale</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://wa.me/919443329558" class="nav-cta">WhatsApp Enquiry</a>
+    </div>
+
+    <button class="nav-hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-drawer">
+        <a href="../index.html">Home</a>
+        <a href="collection.html">Collection</a>
+        <a href="heritage.html">Heritage</a>
+        <a href="wholesale.html" class="active">Wholesale</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://wa.me/919443329558" class="drawer-cta">WhatsApp Enquiry</a>
+    </div>
+</nav>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="wholesale-hero-wrap">
+    <div class="page-hero reveal">
+        <!-- <div class="breadcrumb"><a href="../index.html">Home</a><span> › </span><span>Wholesale</span></div>
+        <div class="page-hero-eyebrow" style="color:var(--gold-pale); margin-top:1rem; letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.7rem;">Direct Manufacturer Pricing</div> -->
+        <h1>Wholesale & <em>Bulk</em> Orders</h1>
+        <p>Partner directly with the weaver. ANR Silks offers competitive wholesale pricing, reliable quality, and Silk Mark certified stock for retailers across India.</p>
+    </div>
+</header>
+
+<section class="section-lg" style="background:var(--ivory);">
+    <div class="container">
+        <div class="sec-head center reveal">
+            <div class="tag-pill" style="justify-content:center;">Why Partner With Us</div>
+            <div class="gold-rule center"></div>
+            <h2 class="serif-title">The ANR <em>Advantage</em></h2>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card reveal reveal-d1">
+                <div class="benefit-icon">🏭</div>
+                <div class="benefit-title">Direct from the Loom</div>
+                <p class="benefit-text">No intermediaries. You buy directly from the weaver, ensuring the most competitive pricing and freshest stock available anywhere.</p>
+            </div>
+            <div class="benefit-card reveal reveal-d2">
+                <div class="benefit-icon">✅</div>
+                <div class="benefit-title">Silk Mark Certified</div>
+                <p class="benefit-text">Every piece carries the government-backed Silk Mark certification — a quality assurance your customers will trust and value.</p>
+            </div>
+            <div class="benefit-card reveal reveal-d3">
+                <div class="benefit-icon">🚚</div>
+                <div class="benefit-title">Pan-India Delivery</div>
+                <p class="benefit-text">We ship reliably across all Indian states. Large orders are packed carefully and dispatched with tracking and insurance.</p>
+            </div>
+            <div class="benefit-card reveal reveal-d1">
+                <div class="benefit-icon">🎨</div>
+                <div class="benefit-title">Custom Design Orders</div>
+                <p class="benefit-text">Commission custom colours, border patterns, and motifs for exclusive designs that differentiate your retail offering.</p>
+            </div>
+            <div class="benefit-card reveal reveal-d2">
+                <div class="benefit-icon">📦</div>
+                <div class="benefit-title">Flexible MOQs</div>
+                <p class="benefit-text">Whether you need 10 pieces or 10,000, we work with your requirements. Pricing scales with volume for maximum value.</p>
+            </div>
+            <div class="benefit-card reveal reveal-d3">
+                <div class="benefit-icon">🤝</div>
+                <div class="benefit-title">Long-Term Partnership</div>
+                <p class="benefit-text">We build lasting relationships. Regular partners receive priority stock, early access to new designs, and dedicated support.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-lg" style="background:var(--cream);">
+    <div class="container">
+        <div class="sec-head center reveal">
+            <div class="tag-pill" style="justify-content:center;">Simple Process</div>
+            <div class="gold-rule center"></div>
+            <h2 class="serif-title">How It <em>Works</em></h2>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card reveal reveal-d1">
+                <div class="step-num">1</div>
+                <div class="step-icon">📞</div>
+                <div class="step-title">Reach Out</div>
+                <p class="step-text">Call, WhatsApp, or fill the enquiry form. Tell us what you need — products, quantities, and timeline.</p>
+            </div>
+            <div class="step-card reveal reveal-d2">
+                <div class="step-num">2</div>
+                <div class="step-icon">📋</div>
+                <div class="step-title">Get a Quote</div>
+                <p class="step-text">We send a detailed quote within 24 hours with pricing, availability, and lead times.</p>
+            </div>
+            <div class="step-card reveal reveal-d3">
+                <div class="step-num">3</div>
+                <div class="step-icon">✅</div>
+                <div class="step-title">Confirm & Pay</div>
+                <p class="step-text">Confirm your order with a deposit. We begin weaving or allocate from existing stock immediately.</p>
+            </div>
+            <div class="step-card reveal reveal-d4">
+                <div class="step-num">4</div>
+                <div class="step-icon">📦</div>
+                <div class="step-title">Receive & Sell</div>
+                <p class="step-text">Goods delivered safely to your door, fully packed, Silk Mark labelled, and ready to retail.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-lg" style="background:var(--ivory);">
+    <div class="container">
+        <div class="sec-head center reveal">
+            <div class="tag-pill" style="justify-content:center;">Available for Wholesale</div>
+            <div class="gold-rule center"></div>
+            <h2 class="serif-title">Products We <em>Supply</em></h2>
+        </div>
+        <div class="wholesale-products">
+            <div class="wp-card reveal reveal-d1">
+                <div class="wp-img"><img src="../images/b1.png" alt="Silk Shirts Full Range"></div>
+                <div class="wp-body">
+                    <div class="wp-name">Silk Shirts — Full Range</div>
+                    <p class="wp-details">Ivory, cream, sandal, off-white, and pearl white. Available in standard sizes S–XXL. Handloom weave, Silk Mark certified.</p>
+                    <div class="wp-chips">
+                        <span class="wp-chip">MOQ: 10 pcs</span>
+                        <span class="wp-chip">Silk Mark ✓</span>
+                        <span class="wp-chip">Custom Sizes</span>
+                    </div>
+                </div>
+            </div>
+            <div class="wp-card reveal reveal-d2">
+                <div class="wp-img"><img src="../images/b2.png" alt="Zari Dhotis Wholesale"></div>
+                <div class="wp-body">
+                    <div class="wp-name">Zari Dhotis & Vesti</div>
+                    <p class="wp-details">Single & double border dhotis with pure zari. Peacock, temple, mango, and plain border options. 4 & 9 yard lengths.</p>
+                    <div class="wp-chips">
+                        <span class="wp-chip">MOQ: 6 pcs</span>
+                        <span class="wp-chip">Real Zari ✓</span>
+                        <span class="wp-chip">Multiple Patterns</span>
+                    </div>
+                </div>
+            </div>
+            <div class="wp-card reveal reveal-d3">
+                <div class="wp-img"><img src="../images/b3.png" alt="Bridal Sets Wholesale"></div>
+                <div class="wp-body">
+                    <div class="wp-name">Bridal Sets & Combos</div>
+                    <p class="wp-details">Complete Muhurtham sets — shirt + vesti + angavastram. Coordinated tones and borders. Ideal for bridal retailers.</p>
+                    <div class="wp-chips">
+                        <span class="wp-chip">MOQ: 5 sets</span>
+                        <span class="wp-chip">Gift Packed</span>
+                        <span class="wp-chip">Custom Colours</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-lg" style="background:var(--terra-pale);">
+    <div class="container">
+        <div class="sec-head center reveal">
+            <div class="tag-pill" style="justify-content:center;">From Our Partners</div>
+            <div class="gold-rule center"></div>
+            <h2 class="serif-title">What Retailers <em>Say</em></h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testi-card reveal reveal-d1">
+                <p class="testi-quote">"ANR has been our primary silk supplier for 5 years. The quality is unmatched and every piece genuinely carries the Silk Mark. Our customers trust us because we trust ANR."</p>
+                <div class="testi-author">Rajesh Textiles</div>
+                <div class="testi-place">Chennai, Tamil Nadu</div>
+            </div>
+            <div class="testi-card reveal reveal-d2">
+                <p class="testi-quote">"The wholesale pricing is genuinely competitive because it's direct from the weaver. We've never been let down on quality or delivery timelines in three years of partnership."</p>
+                <div class="testi-author">Priya Silk House</div>
+                <div class="testi-place">Coimbatore, Tamil Nadu</div>
+            </div>
+            <div class="testi-card reveal reveal-d3">
+                <p class="testi-quote">"Custom design requests are handled quickly and accurately. ANR understood exactly what our bridal customers needed and delivered beyond expectations."</p>
+                <div class="testi-author">Wedding Silk Gallery</div>
+                <div class="testi-place">Madurai, Tamil Nadu</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-lg" style="background:var(--cream);">
+    <div class="container">
+        <div class="enq-layout">
+            <div class="reveal">
+                <div class="tag-pill">Make an Enquiry</div>
+                <div class="gold-rule"></div>
+                <h2 class="serif-title">Start Your <em>Partnership</em></h2>
+                <p class="body-text" style="margin-top:0.8rem; margin-bottom:1.5rem;">Fill the form or reach out directly. We respond within 24 hours on business days.</p>
+                <div class="enq-info-card">
+                    <div class="ei-row">
+                        <div class="ei-icon">📞</div>
+                        <div>
+                            <span class="ei-label">WhatsApp / Call</span>
+                            <div class="ei-val"><a href="tel:+919443329558">+91 94433 29558</a></div>
+                        </div>
+                    </div>
+                    <div class="ei-row">
+                        <div class="ei-icon">📍</div>
+                        <div>
+                            <span class="ei-label">Workshop Address</span>
+                            <div class="ei-val">No. 4, First Street, M.M. Avenue,<br>Kanchipuram – 631 501</div>
+                        </div>
+                    </div>
+                    <div class="ei-row">
+                        <div class="ei-icon">🕐</div>
+                        <div>
+                            <span class="ei-label">Business Hours</span>
+                            <div class="ei-val">Mon – Sat: 9 AM – 7 PM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="enq-form reveal reveal-d2">
+                <h3>Wholesale Enquiry</h3>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Your Name *</label>
+                        <input type="text" placeholder="Full Name">
+                    </div>
+                    <div class="form-field">
+                        <label>Business / Shop Name</label>
+                        <input type="text" placeholder="Shop / Company">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Phone / WhatsApp *</label>
+                        <input type="tel" placeholder="+91 XXXXX XXXXX">
+                    </div>
+                    <div class="form-field">
+                        <label>City</label>
+                        <input type="text" placeholder="Your City">
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label>Products Needed</label>
+                    <select>
+                        <option value="">Select products...</option>
+                        <option>Silk Shirts</option>
+                        <option>Zari Dhotis / Vesti</option>
+                        <option>Bridal Sets</option>
+                        <option>Mixed / Multiple Products</option>
+                        <option>Custom Design</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>Approximate Quantity</label>
+                    <select>
+                        <option value="">Select range...</option>
+                        <option>10–50 pieces</option>
+                        <option>50–200 pieces</option>
+                        <option>200–500 pieces</option>
+                        <option>500+ pieces</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>Additional Requirements</label>
+                    <textarea rows="3" placeholder="Custom designs, delivery timeline, special requirements..."></textarea>
+                </div>
+                <a href="https://wa.me/919443329558" class="btn-submit">Send Enquiry via WhatsApp →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-grid">
+        <div>
+            <div class="footer-brand-name">ANR Silks</div>
+            <div class="footer-brand-sub">Kanchipuram — Established 2011</div>
+            <p class="footer-desc">Preserving the heritage of Kanchipuram silk weaving. Direct from loom to wardrobe — Silk Mark certified, authenticity always guaranteed.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Pages</h4>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="collection.html">Collection</a></li>
+                <li><a href="heritage.html">Heritage</a></li>
+                <li><a href="wholesale.html">Wholesale</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Visit Us</h4>
+            <p class="footer-contact-val">No. 4, First Street<br>M.M. Avenue<br>Kanchipuram – 631 501</p>
+            <p class="footer-contact-val" style="margin-top:0.8rem;"><a href="tel:+919443329558">+91 94433 29558</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p class="footer-copy">© 2026 ANR Silks & Shirts, Kanchipuram. All rights reserved.</p>
+        <div class="footer-badges">
+            <div class="foot-badge">Silk Mark Certified</div>
+            <div class="foot-badge">Handloom Authenticated</div>
+        </div>
+    </div>
+</footer>
+
+<script src="../shared.js"></script>
+</body>
+</html>

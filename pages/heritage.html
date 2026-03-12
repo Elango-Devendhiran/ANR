@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage | ANR Silks & Shirts Kanchipuram</title>
+    <meta name="description" content="The story of ANR Silks — 15 years of authentic Kanchipuram handloom weaving tradition. Learn about our craft, our weavers, and our heritage.">
+    <link rel="stylesheet" href="../shared.css">
+    <style>
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .reveal.revealed { opacity: 1; transform: translateY(0); }
+        .reveal-d1 { transition-delay: 0.1s; }
+        .reveal-d2 { transition-delay: 0.2s; }
+        .reveal-d3 { transition-delay: 0.3s; }
+
+        /* ── Header Banner Section (Styled like collection.html) ── */
+        .heritage-hero-wrap {
+            margin-top: var(--nav-h);
+            background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('../images/banner_h.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 2rem 5%;
+        }
+
+        .heritage-hero-wrap .page-hero {
+            background: transparent;
+            max-width: 850px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .heritage-hero-wrap h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            color: #fff;
+            margin: 0.5rem 0;
+            line-height: 1.1;
+        }
+
+        .heritage-hero-wrap h1 em {
+            font-style: italic;
+            color: var(--gold-pale);
+        }
+
+        .heritage-hero-wrap p {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+
+        .heritage-hero-wrap .breadcrumb a, 
+        .heritage-hero-wrap .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+        }
+
+        /* ── Story intro ── */
+        .story-layout {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+        }
+        .story-img {
+            width: 100%; aspect-ratio: 3/4;
+            background: var(--sand-light);
+            display: flex; align-items: center; justify-content: center;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .story-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .story-content blockquote {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem; font-style: italic; color: var(--text-mid);
+            border-left: 3px solid var(--gold); padding: 1rem 1.5rem;
+            background: var(--cream); border-radius: 0 var(--radius) var(--radius) 0;
+            line-height: 1.8; margin: 1.5rem 0;
+        }
+
+        /* ── Milestones timeline ── */
+        .timeline { position: relative; padding: 2rem 0; }
+        .timeline::before {
+            content: ''; position: absolute;
+            left: 50%; top: 0; bottom: 0; width: 1px;
+            background: var(--sand); transform: translateX(-50%);
+        }
+        .timeline-item {
+            display: grid; grid-template-columns: 1fr 80px 1fr;
+            gap: 0; align-items: center; margin-bottom: 3rem;
+        }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .tl-left { text-align: right; padding-right: 2.5rem; }
+        .tl-right { padding-left: 2.5rem; }
+        .tl-center { display: flex; justify-content: center; align-items: center; }
+        .tl-dot {
+            width: 40px; height: 40px;
+            background: var(--maroon); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'DM Serif Display', serif; font-size: 0.7rem;
+            color: var(--gold-pale); font-weight: 700; flex-shrink: 0;
+            box-shadow: 0 0 0 4px var(--ivory), 0 0 0 5px var(--sand);
+        }
+        .tl-year {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem; font-style: italic; color: var(--gold); line-height: 1;
+            display: block; margin-bottom: 0.4rem;
+        }
+        .tl-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.15rem; color: var(--text-dark); margin-bottom: 0.4rem;
+        }
+        .tl-text { font-size: 0.82rem; color: var(--text-light); line-height: 1.65; }
+
+        /* ── Craft process ── */
+        .process-grid {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;
+        }
+        .process-step {
+            text-align: center; padding: 1.5rem 1rem;
+            background: var(--cream); border-radius: var(--radius);
+            border: 1px solid var(--sand-light);
+            position: relative;
+        }
+        .process-step:not(:last-child)::after {
+            content: '→';
+            position: absolute; right: -1rem; top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold); font-size: 1rem; z-index: 1;
+        }
+        .ps-num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem; font-style: italic; color: var(--gold-pale);
+            line-height: 1; margin-bottom: 0.5rem;
+        }
+        .ps-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+        .ps-title { font-size: 0.72rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.3rem; }
+        .ps-desc { font-size: 0.72rem; color: var(--text-light); line-height: 1.55; }
+
+        /* ── Kanchipuram info ── */
+        .kanchi-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+        }
+        .kanchi-img {
+            width: 100%; aspect-ratio: 4/3;
+            background: var(--sand-light);
+            display: flex; align-items: center; justify-content: center;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .kanchi-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .kanchi-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+        .kf-item {
+            background: var(--cream); border: 1px solid var(--sand-light);
+            border-radius: var(--radius); padding: 1.2rem;
+        }
+        .kf-num { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--gold); line-height: 1; }
+        .kf-label { font-size: 0.72rem; color: var(--text-light); margin-top: 0.2rem; }
+
+        /* ── Team / values ── */
+        .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .value-card {
+            background: var(--cream); border-radius: var(--radius);
+            padding: 2rem; border-top: 3px solid var(--gold);
+        }
+        .value-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+        .value-title { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--text-dark); margin-bottom: 0.6rem; }
+        .value-text { font-size: 0.82rem; color: var(--text-light); line-height: 1.7; }
+
+        @media (max-width: 900px) {
+            .story-layout { grid-template-columns: 1fr; }
+            .timeline::before { left: 20px; }
+            .timeline-item { grid-template-columns: 40px 1fr; gap: 1.5rem; }
+            .tl-left { display: none; }
+            .tl-center { justify-content: flex-start; }
+            .process-grid { grid-template-columns: 1fr 1fr; }
+            .process-step::after { display: none; }
+            .kanchi-grid { grid-template-columns: 1fr; }
+            .values-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .values-grid { grid-template-columns: 1fr; }
+            .kanchi-facts { grid-template-columns: 1fr 1fr; }
+            .process-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <a href="../index.html" class="nav-brand">
+        <div class="nav-emblem">A</div>
+        <div class="nav-brand-text">
+            <span class="nav-brand-name">ANR Silks & Shirts</span>
+            <span class="nav-brand-sub">Kanchipuram — Est. 2011</span>
+        </div>
+    </a>
+    <nav class="site-nav">
+    <a href="../index.html" class="nav-brand">
+        <div class="nav-emblem">A</div>
+        <div class="nav-brand-text">
+            <span class="nav-brand-name">ANR Silks & Shirts</span>
+            <span class="nav-brand-sub">Kanchipuram — Est. 2011</span>
+        </div>
+    </a>
+
+    <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="collection.html">Collection</a>
+        <a href="heritage.html" class="active">Heritage</a>
+        <a href="wholesale.html">Wholesale</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://wa.me/919443329558" class="nav-cta">WhatsApp Enquiry</a>
+    </div>
+
+    <button class="nav-hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-drawer">
+        <a href="../index.html">Home</a>
+        <a href="collection.html">Collection</a>
+        <a href="heritage.html" class="active">Heritage</a>
+        <a href="wholesale.html">Wholesale</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://wa.me/919443329558" class="drawer-cta">WhatsApp Enquiry</a>
+    </div>
+</nav>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="heritage-hero-wrap">
+    <div class="page-hero reveal">
+        <!-- <div class="breadcrumb">
+            <a href="../index.html">Home</a><span> › </span><span>Heritage</span>
+        </div>
+        <div class="page-hero-eyebrow" style="color:var(--gold-pale); margin-top:1rem; letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.7rem;">Est. 2011 — Kanchipuram</div>-->
+        <h1>Our <em>Heritage</em></h1> 
+        <p>Fifteen years of weaving tradition, one thread at a time. Discover the people, the craft, and the city behind every ANR silk.</p>
+    </div>
+</header>
+
+<section class="section-lg" style="background:var(--ivory);">
+    <div class="container">
+        <div class="story-layout">
+            <div class="reveal">
+                <div class="story-img">
+                    <img src="../images/h1.png" alt="A Family of Weavers">
+                </div>
+            </div>
+            <div class="reveal reveal-d2">
+                <div class="tag-pill">Our Story</div>
+                <div class="gold-rule"></div>
+                <h2 class="serif-title">A <em>Family</em> of Weavers</h2>
+                <blockquote>"We didn't start as a shop. We started as weavers — and that is still what we are at heart."</blockquote>
+                <p class="body-text">ANR Silks & Shirts was founded in 2011 in the heart of Kanchipuram — the silk capital of South India. What began as a small family enterprise supplying local retailers has grown into a trusted name for authentic handloom across Tamil Nadu.</p>
+                <p class="body-text" style="margin-top:1rem;">Our looms have been in the family for generations. Every ANR silk is woven with the same care and attention that our forefathers brought to their craft — no shortcuts, no compromises, no synthetics.</p>
+                <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+                    <a href="collection.html" class="btn btn-primary">View Collection</a>
+                    <a href="contact.html" class="btn btn-outline-terra">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-lg" style="background:var(--cream);">
+    <div class="container">
+        <div class="sec-head center reveal">
+            <div class="tag-pill" style="justify-content:center;">Milestones</div>
+            <div class="gold-rule center"></div>
+            <h2 class="serif-title">15 Years, One <em>Thread</em></h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="tl-left">
+                    <span class="tl-year">2011</span>
+                    <div class="tl-title">The Beginning</div>
+                    <p class="tl-text">ANR Silks established in Kanchipuram with three handlooms and a commitment to pure silk.</p>
+                </div>
+                <div class="tl-center"><div class="tl-dot">✦</div></div>
+                <div class="tl-right">
+                    <span class="tl-year" style="visibility:hidden;">2011</span>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="tl-left"></div>
+                <div class="tl-center"><div class="tl-dot">✦</div></div>
+                <div class="tl-right">
+                    <span class="tl-year">2014</span>
+                    <div class="tl-title">Silk Mark Certification</div>
+                    <p class="tl-text">Received the prestigious Silk Mark certification — confirming 100% natural silk in every product.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="tl-left">
+                    <span class="tl-year">2017</span>
+                    <div class="tl-title">Wholesale Expansion</div>
+                    <p class="tl-text">Began direct wholesale supply to retailers across Tamil Nadu, Kerala, and Andhra Pradesh.</p>
+                </div>
+                <div class="tl-center"><div class="tl-dot">✦</div></div>
+                <div class="tl-right"></div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="tl-left"></div>
+                <div class="tl-center"><div class="tl-dot">✦</div></div>
+                <div class="tl-right">
+                    <span class="tl-year">2020</span>
+                    <div class="tl-title">Custom Weaving Launch</div>
+                    <p class="tl-text">Introduced custom design services — allowing brides, grooms, and retailers to commission bespoke patterns.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="tl-left">
+                    <span class="tl-year">2026</span>
+                    <div class="tl-title">Today & Beyond</div>
+                    <p class="tl-text">Serving thousands of families annually. Still handwoven. Still authentic. Still family.</p>
+                </div>
+                <div class="tl-center"><div class="tl-dot">✦</div></div>
+                <div class="tl-right"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-lg" style="background:var(--ivory);">
+    <div class="container">
+        <div class="sec-head center reveal">
+            <div class="tag-pill" style="justify-content:center;">The Art of Weaving</div>
+            <div class="gold-rule center"></div>
+            <h2 class="serif-title">From Thread to <em>Treasure</em></h2>
+            <p class="body-text" style="max-width:560px; margin:0.8rem auto 0; text-align:center;">Every ANR silk garment passes through five careful stages, each handled by a specialist trained over years in the Kanchipuram tradition.</p>
+        </div>
+        <div class="process-grid reveal">
+            <div class="process-step">
+                <div class="ps-num">01</div>
+                <div class="ps-icon">🧶</div>
+                <div class="ps-title">Silk Sourcing</div>
+                <p class="ps-desc">Pure mulberry silk thread sourced from certified farms. Only the finest grade is accepted.</p>
+            </div>
+            <div class="process-step">
+                <div class="ps-num">02</div>
+                <div class="ps-icon">🎨</div>
+                <div class="ps-title">Natural Dyeing</div>
+                <p class="ps-desc">Threads dyed using time-honoured methods for deep, lasting colour that doesn't fade.</p>
+            </div>
+            <div class="process-step">
+                <div class="ps-num">03</div>
+                <div class="ps-icon">🖼️</div>
+                <div class="ps-title">Pattern Design</div>
+                <p class="ps-desc">Traditional motifs — peacock, temple, mango — designed by our master artisans.</p>
+            </div>
+            <div class="process-step">
+                <div class="ps-num">04</div>
+                <div class="ps-icon">⚙️</div>
+                <div class="ps-title">Handloom Weaving</div>
+                <p class="ps-desc">Each piece woven by hand over 2–7 days. The gold zari border is interlaced thread by thread.</p>
+            </div>
+            <div class="process-step">
+                <div class="ps-num">05</div>
+                <div class="ps-icon">✅</div>
+                <div class="ps-title">Quality & Certification</div>
+                <p class="ps-desc">Every garment is inspected and Silk Mark certified before leaving our workshop.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-lg" style="background:var(--terra-pale);">
+    <div class="container">
+        <div class="kanchi-grid">
+            <div class="reveal">
+                <div class="tag-pill">The Silk Capital</div>
+                <div class="gold-rule"></div>
+                <h2 class="serif-title">Why <em>Kanchipuram</em>?</h2>
+                <p class="body-text" style="margin-top:1rem;">Kanchipuram has been the undisputed capital of silk weaving in India for over 400 years. Its unique combination of artisan skill, local mulberry cultivation, and cultural identity has produced a silk tradition found nowhere else on earth.</p>
+                <p class="body-text" style="margin-top:0.8rem;">The ANR workshop sits in the heart of the weaving district — a stone's throw from where generations of families have plied their looms. We don't just source from Kanchipuram. We are Kanchipuram.</p>
+                <div class="kanchi-facts">
+                    <div class="kf-item">
+                        <div class="kf-num">400+</div>
+                        <div class="kf-label">Years of silk tradition</div>
+                    </div>
+                    <div class="kf-item">
+                        <div class="kf-num">5,000+</div>
+                        <div class="kf-label">Weaving families</div>
+                    </div>
+                    <div class="kf-item">
+                        <div class="kf-num">GI</div>
+                        <div class="kf-label">Geographical Indication tagged</div>
+                    </div>
+                    <div class="kf-item">
+                        <div class="kf-num">100%</div>
+                        <div class="kf-label">Handwoven on traditional looms</div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal reveal-d2">
+                <div class="kanchi-img">
+                    <img src="../images/h2.png" alt="Why Kanchipuram">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-lg" style="background:var(--ivory);">
+    <div class="container">
+        <div class="sec-head center reveal">
+            <div class="tag-pill" style="justify-content:center;">What We Stand For</div>
+            <div class="gold-rule center"></div>
+            <h2 class="serif-title">Our <em>Values</em></h2>
+        </div>
+        <div class="values-grid">
+            <div class="value-card reveal reveal-d1">
+                <div class="value-icon">🤝</div>
+                <div class="value-title">Authenticity Above All</div>
+                <p class="value-text">Every silk we sell carries the Silk Mark certification. If it isn't 100% pure, it doesn't leave our workshop. No exceptions, no compromises.</p>
+            </div>
+            <div class="value-card reveal reveal-d2">
+                <div class="value-icon">🌱</div>
+                <div class="value-title">Weaver Welfare</div>
+                <p class="value-text">Our artisans are the heart of everything. We pay fair wages, maintain safe working conditions, and celebrate the craftspeople who make every piece possible.</p>
+            </div>
+            <div class="value-card reveal reveal-d3">
+                <div class="value-icon">🔗</div>
+                <div class="value-title">Direct Access</div>
+                <p class="value-text">By selling direct from weaver to wardrobe, we ensure you receive maximum value and we sustain our weavers' livelihoods without middlemen eroding either side.</p>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:3rem;" class="reveal">
+            <a href="contact.html" class="btn btn-primary btn-lg">Get in Touch →</a>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-grid">
+        <div>
+            <div class="footer-brand-name">ANR Silks</div>
+            <div class="footer-brand-sub">Kanchipuram — Established 2011</div>
+            <p class="footer-desc">Preserving the heritage of Kanchipuram silk weaving. Direct from loom to wardrobe — Silk Mark certified, authenticity always guaranteed.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Pages</h4>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="collection.html">Collection</a></li>
+                <li><a href="heritage.html">Heritage</a></li>
+                <li><a href="wholesale.html">Wholesale</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Collection</h4>
+            <ul>
+                <li><a href="collection.html">Silk Shirts</a></li>
+                <li><a href="collection.html">Zari Dhotis</a></li>
+                <li><a href="collection.html">Wedding Sets</a></li>
+                <li><a href="collection.html">Festival Wear</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Visit Us</h4>
+            <p class="footer-contact-val">No. 4, First Street<br>M.M. Avenue<br>Kanchipuram – 631 501</p>
+            <p class="footer-contact-val" style="margin-top:0.8rem;"><a href="tel:+919443329558">+91 94433 29558</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p class="footer-copy">© 2026 ANR Silks & Shirts, Kanchipuram. All rights reserved.</p>
+        <div class="footer-badges">
+            <div class="foot-badge">Silk Mark Certified</div>
+            <div class="foot-badge">Handloom Authenticated</div>
+        </div>
+    </div>
+</footer>
+
+<script src="../shared.js"></script>
+</body>
+</html>
