@@ -53,15 +53,3 @@
         revealEls.forEach(el => el.classList.add('revealed'));
     }
 })();
-/* Update the Hamburger toggle section */
-ham.addEventListener('click', () => {
-    ham.classList.toggle('open');
-    drawer.classList.toggle('open');
-    
-    // Prevent background from moving when menu is open
-    if (drawer.classList.contains('open')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = '';
-    }
-});
