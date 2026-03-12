@@ -159,16 +159,16 @@ ul { list-style: none; }
     padding: 0.85rem 0;
     overflow: hidden;
     width: 100%;
-    position: fixed; /* Changed from relative to fixed */
-    top: var(--nav-h); /* Sticks it exactly below the navbar */
-    z-index: 998; 
-    display: block !important;
+    position: relative;
+    z-index: 10; /* Ensures it stays above the hero */
+    display: block !important; /* Forces visibility */
 }
 
 .marquee-track {
     display: flex;
-    width: max-content;
+    width: max-content; /* Critical: Prevents text from wrapping/hiding */
     gap: 3rem;
+    /* Faster speed: 20s for desktop, even faster for mobile below */
     animation: marquee-scroll 20s linear infinite; 
     white-space: nowrap;
 }
@@ -183,14 +183,15 @@ ul { list-style: none; }
 
 @keyframes marquee-scroll {
     from { transform: translateX(0); }
+    /* Moves exactly half the width for a seamless loop */
     to { transform: translateX(-50%); } 
 }
 
-/* Mobile Speed Fix */
+/* ─── Mobile Speed ─── */
 @media (max-width: 768px) {
     .marquee-track {
-        /* Adjusted to 15s for a smoother but faster feel on mobile */
-        animation: marquee-scroll 15s linear infinite; 
+        /* Faster on mobile because the screen is narrower */
+        animation: marquee-scroll 28s linear infinite; 
     }
 }
 .marquee-track .m-sep { color: var(--gold-pale); }
