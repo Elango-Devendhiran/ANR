@@ -48,121 +48,6 @@ ul { list-style: none; }
 ::-webkit-scrollbar-track { background: var(--cream); }
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
 
-/* ════════════════════════════════════════════════
-   ANR SILKS — PAGE LOADER STYLES  |  loader-styles.css
-
-   PLACEMENT: Copy everything below into shared.css
-   Paste it AFTER the :root { } variables block
-   and BEFORE the .site-nav { } navigation styles.
-
-   Example position in shared.css:
-   :root { --ivory: ...; --gold: ...; }   ← already exists
-   ← PASTE HERE
-   .site-nav { position: fixed; ... }     ← already exists
-════════════════════════════════════════════════ */
-
-/* ── Prevent scroll while loader is visible ── */
-html.is-loading {
-    overflow: hidden;
-    overscroll-behavior: none;
-}
-
-/* ── Overlay ── */
-#page-loader {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: var(--ivory);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.8rem;
-    /* Fade-out transition */
-    transition: opacity 0.6s ease, visibility 0.6s ease;
-    visibility: visible;
-    opacity: 1;
-}
-
-/* State: fading out */
-#page-loader.fade-out {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-/* ── Pulsing brand emblem ── */
-.loader-emblem {
-    width: 64px;
-    height: 64px;
-    border: 2px solid var(--gold);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.6rem;
-    color: var(--gold);
-    animation: loader-pulse 1.6s ease-in-out infinite;
-}
-
-@keyframes loader-pulse {
-    0%, 100% { transform: scale(1);    opacity: 1;   }
-    50%       { transform: scale(1.08); opacity: 0.65; }
-}
-
-/* ── Brand name + sub ── */
-.loader-brand {
-    text-align: center;
-}
-.loader-brand-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.4rem;
-    color: var(--text-dark);
-    display: block;
-    letter-spacing: 0.05em;
-}
-.loader-brand-sub {
-    font-size: 0.55rem;
-    font-weight: 700;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--text-light);
-    display: block;
-    margin-top: 0.3rem;
-}
-
-/* ── Gold progress bar ── */
-.loader-bar-wrap {
-    width: 160px;
-    height: 2px;
-    background: var(--sand-light);
-    border-radius: 2px;
-    overflow: hidden;
-}
-.loader-bar {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, var(--gold), var(--gold-bright));
-    border-radius: 2px;
-    transition: width 0.35s ease;
-}
-
-/* ── Animated tagline ── */
-.loader-tagline {
-    font-family: 'Libre Baskerville', serif;
-    font-style: italic;
-    font-size: 0.78rem;
-    color: var(--text-light);
-    letter-spacing: 0.04em;
-    animation: loader-blink 1.8s ease-in-out infinite;
-}
-
-@keyframes loader-blink {
-    0%, 100% { opacity: 0.35; }
-    50%       { opacity: 1;    }
-}
-
 /* ═══════════════════════════════════════════════
    NAVIGATION
 ═══════════════════════════════════════════════ */
@@ -172,7 +57,7 @@ html.is-loading {
     background: var(--ivory);
     border-bottom: 1.5px solid var(--sand-light);
     display: flex; align-items: center;
-    padding: 0 3%;
+    padding: 0 5%;
     justify-content: space-between;
     transition: box-shadow 0.3s;
 }
@@ -183,16 +68,16 @@ html.is-loading {
 .nav-emblem {
     width: 40px; height: 40px; border: 2px solid var(--gold);
     border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--gold);
+    font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--gold);
     flex-shrink: 0;
 }
 .nav-brand-text {}
 .nav-brand-name {
     display: block; font-family: 'DM Serif Display', serif;
-    font-size: 1.15rem; color: var(--text-dark); line-height: 1.2;
+    font-size: 18px; color: var(--text-dark); line-height: 1.2;
 }
 .nav-brand-sub {
-    display: block; font-size: 0.55rem; color: var(--text-light);
+    display: block; font-size: 11px; color: var(--text-light);
     letter-spacing: 0.35em; text-transform: uppercase; font-weight: 600;
 }
 
@@ -201,9 +86,9 @@ html.is-loading {
     display: flex; gap: 0.2rem; align-items: center;
 }
 .nav-links a {
-    font-size: 0.7rem; font-weight: 600;
+    font-size: 12px; font-weight: 600;
     letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--text-mid); padding: 0.5rem 0.85rem;
+    color: var(--text-mid); padding: 8px 14px;
     border-radius: 2px; transition: color 0.2s, background 0.2s;
     white-space: nowrap;
 }
@@ -212,7 +97,7 @@ html.is-loading {
 
 .nav-cta {
     background: var(--maroon); color: #fff !important;
-    font-size: 0.65rem !important; font-weight: 700 !important;
+    font-size: 11px !important; font-weight: 700 !important;
     letter-spacing: 0.2em !important; text-transform: uppercase !important;
     padding: 0.65rem 1.4rem !important; border-radius: var(--radius) !important;
     transition: background 0.3s !important; flex-shrink: 0;
@@ -251,8 +136,8 @@ html.is-loading {
 }
 .nav-drawer.open { display: flex; }
 .nav-drawer a {
-    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--text-mid); padding: 0.75rem 0;
+    font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-mid); padding: 12px 0;
     border-bottom: 1px solid var(--sand-light); transition: color 0.2s;
 }
 .nav-drawer a:last-child { border-bottom: none; }
@@ -289,7 +174,7 @@ html.is-loading {
 }
 
 .marquee-track span {
-    font-size: 0.65rem;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -324,23 +209,23 @@ html.is-loading {
 }
 .page-hero-eyebrow {
     display: flex; align-items: center; gap: 0.8rem;
-    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold);
+    font-size: 11px; font-weight: 700; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold);
 }
-.page-hero-eyebrow::before { content: '◆'; font-size: 0.4rem; }
+.page-hero-eyebrow::before { content: '◆'; font-size: 7px; }
 .page-hero h1 {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.2rem, 5vw, 4.5rem);
+    font-size: clamp(35px, 5vw, 72px);
     line-height: 1.05; color: var(--text-dark);
 }
 .page-hero h1 em { font-style: italic; color: var(--terracotta); }
 .page-hero p {
     font-family: 'Libre Baskerville', serif;
     font-style: italic; color: var(--text-light);
-    font-size: clamp(0.9rem, 1.5vw, 1.05rem); max-width: 560px; line-height: 1.75;
+    font-size: clamp(14px, 1.5vw, 17px); max-width: 560px; line-height: 1.75;
 }
 .breadcrumb {
     display: flex; gap: 0.5rem; align-items: center;
-    font-size: 0.65rem; color: var(--text-light); font-weight: 500; letter-spacing: 0.05em;
+    font-size: 12px; color: var(--text-light); font-weight: 500; letter-spacing: 0.05em;
 }
 .breadcrumb a { color: var(--gold); transition: color 0.2s; }
 .breadcrumb a:hover { color: var(--terracotta); }
@@ -354,27 +239,27 @@ html.is-loading {
 /* Tag pill */
 .tag-pill {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
     color: var(--terracotta);
 }
-.tag-pill::before { content: '◆'; font-size: 0.4rem; }
+.tag-pill::before { content: '◆'; font-size: 7px; }
 
 /* Serif display title */
 .serif-title {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.8rem, 3.5vw, 3.5rem);
+    font-size: clamp(29px, 3.5vw, 56px);
     line-height: 1.1; color: var(--text-dark);
 }
 .serif-title em { font-style: italic; color: var(--terracotta); }
 
 .serif-title-sm {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    font-size: clamp(22px, 2.5vw, 35px);
     line-height: 1.15; color: var(--text-dark);
 }
 
 /* Body text */
-.body-text { font-size: 0.9rem; color: var(--text-light); line-height: 1.85; }
+.body-text { font-size: 15px; color: var(--text-light); line-height: 1.85; }
 
 /* Section spacing */
 .section { padding: 5rem 5%; }
@@ -386,9 +271,9 @@ html.is-loading {
 
 /* ─── BUTTONS ─── */
 .btn {
-    display: inline-block; font-size: 0.65rem; font-weight: 700;
+    display: inline-block; font-size: 11px; font-weight: 700;
     letter-spacing: 0.2em; text-transform: uppercase;
-    padding: 0.9rem 2rem; border-radius: var(--radius);
+    padding: 14px 32px; border-radius: var(--radius);
     transition: all 0.25s; cursor: pointer; border: 2px solid transparent;
     white-space: nowrap;
 }
@@ -404,14 +289,14 @@ html.is-loading {
 .btn-outline-terra:hover { background: var(--terracotta); color: #fff; }
 .btn-white { background: #fff; color: var(--maroon); border-color: #fff; }
 .btn-white:hover { background: var(--gold-pale); border-color: var(--gold-pale); }
-.btn-sm { padding: 0.6rem 1.4rem; font-size: 0.6rem; }
-.btn-lg { padding: 1.1rem 2.8rem; font-size: 0.7rem; }
+.btn-sm { padding: 10px 22px; font-size: 11px; }
+.btn-lg { padding: 18px 45px; font-size: 12px; }
 
 /* ─── IMAGE PLACEHOLDERS ─── */
 .img-ph {
     background: linear-gradient(135deg, var(--warm) 0%, var(--sand) 100%);
     display: flex; align-items: center; justify-content: center;
-    font-family: monospace; font-size: 0.65rem; color: var(--text-light);
+    font-family: monospace; font-size: 11px; color: var(--text-light);
     border-radius: var(--radius);
 }
 
@@ -444,26 +329,26 @@ html.is-loading {
 }
 .footer-brand-name {
     font-family: 'DM Serif Display', serif;
-    font-size: 2rem; font-style: italic; color: var(--gold);
+    font-size: 32px; font-style: italic; color: var(--gold);
 }
 .footer-brand-sub {
-    font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--text-light); margin-top: 0.3rem;
+    font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--text-light); margin-top: 5px;
 }
 .footer-desc {
-    font-size: 0.82rem; color: rgba(245,234,216,0.5);
-    line-height: 1.75; margin-top: 1.2rem; max-width: 280px;
+    font-size: 14px; color: rgba(245,234,216,0.5);
+    line-height: 1.75; margin-top: 19px; max-width: 280px;
 }
 .footer-col h4 {
-    font-size: 0.58rem; font-weight: 700; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 1.2rem;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 19px;
 }
 .footer-col ul { display: flex; flex-direction: column; gap: 0.65rem; }
 .footer-col ul li a {
-    font-size: 0.82rem; color: rgba(245,234,216,0.55); transition: color 0.2s;
+    font-size: 14px; color: rgba(245,234,216,0.55); transition: color 0.2s;
 }
 .footer-col ul li a:hover { color: var(--gold); }
-.footer-contact-val { font-size: 0.82rem; color: rgba(245,234,216,0.55); line-height: 1.6; margin-top: 0.3rem; }
+.footer-contact-val { font-size: 14px; color: rgba(245,234,216,0.55); line-height: 1.6; margin-top: 5px; }
 .footer-contact-val a { color: var(--gold-pale); transition: color 0.2s; }
 .footer-contact-val a:hover { color: var(--gold); }
 .footer-bottom {
@@ -471,12 +356,12 @@ html.is-loading {
     display: flex; justify-content: space-between; align-items: center;
     flex-wrap: wrap; gap: 1rem;
 }
-.footer-copy { font-size: 0.7rem; color: rgba(245,234,216,0.3); letter-spacing: 0.05em; }
+.footer-copy { font-size: 12px; color: rgba(245,234,216,0.3); letter-spacing: 0.05em; }
 .footer-badges { display: flex; gap: 0.8rem; flex-wrap: wrap; }
 .foot-badge {
     border: 1px solid rgba(201,168,76,0.3);
-    padding: 0.35rem 0.9rem;
-    font-size: 0.55rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 6px 14px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--gold-pale); border-radius: 100px;
 }
 
@@ -499,4 +384,3 @@ html.is-loading {
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
 }
-
