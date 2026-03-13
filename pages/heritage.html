@@ -177,38 +177,11 @@
 
         @media (max-width: 900px) {
             .story-layout { grid-template-columns: 1fr; }
-            .timeline::before { 
-        left: 20px; /* Moves the vertical line to the left */
-    }
-            .timeline-item { 
-        /* Change grid to 2 columns: line space and content space */
-        grid-template-columns: 40px 1fr; 
-        gap: 1rem; 
-        margin-bottom: 2.5rem;
-    }
-            /* FIX: Show the left side content and align it to the left */
-    .tl-left { 
-        display: block !important; /* Forces it to show */
-        text-align: left !important; 
-        padding-right: 0 !important;
-        grid-column: 2; /* Moves it into the main content column */
-        margin-bottom: 0.5rem; /* Space between year and text */
-    }
-            .tl-right { 
-        padding-left: 0 !important; 
-        grid-column: 2; /* Moves it into the main content column */
-    }
-            .tl-center { 
-        justify-content: flex-start; 
-        grid-column: 1; /* Keeps the dot on the vertical line */
-        grid-row: 1 / span 2; /* Allows dot to sit next to multiple rows of text */
-        align-items: flex-start;
-        padding-top: 5px;
-    }
-            .tl-year { 
-        font-size: 1.4rem; /* Slightly smaller for mobile */
-    }
-            .process-grid { grid-template-columns: 1fr 1fr; }
+            .timeline::before { left: 20px; }
+            .timeline-item { grid-template-columns: 40px 1fr; gap: 1.5rem; }
+            .tl-left { display: none; }
+            .tl-center { justify-content: flex-start; }
+            .process-grid { grid-template-columns: 1fr; }
             .process-step::after { display: none; }
             .kanchi-grid { grid-template-columns: 1fr; }
             .values-grid { grid-template-columns: 1fr 1fr; }
@@ -216,36 +189,11 @@
         @media (max-width: 600px) {
             .values-grid { grid-template-columns: 1fr; }
             .kanchi-facts { grid-template-columns: 1fr 1fr; }
-            .process-grid { grid-template-columns: 1fr 1fr; }
+            .process-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- ════════════════════════════════════════════
-     ANR SILKS — PAGE LOADER  |  loader-snippet.html
-     
-     PLACEMENT: Paste this as the VERY FIRST child
-     inside <body>, before <nav class="site-nav">
-     
-     Example:
-     <body>
-         ← PASTE HERE
-         <nav class="site-nav">
-         ...
-     ════════════════════════════════════════════ -->
-
-<div id="page-loader">
-    <div class="loader-emblem">A</div>
-    <div class="loader-brand">
-        <span class="loader-brand-name">ANR Silks &amp; Shirts</span>
-        <span class="loader-brand-sub">Kanchipuram — Est. 2011</span>
-    </div>
-    <div class="loader-bar-wrap">
-        <div class="loader-bar" id="loader-bar"></div>
-    </div>
-    <span class="loader-tagline">Weaving tradition since 2011…</span>
-</div>
-
 
 <nav class="site-nav">
     <a href="../index.html" class="nav-brand">
@@ -255,15 +203,6 @@
             <span class="nav-brand-sub">Kanchipuram — Est. 2011</span>
         </div>
     </a>
-    <nav class="site-nav">
-    <a href="../index.html" class="nav-brand">
-        <div class="nav-emblem">A</div>
-        <div class="nav-brand-text">
-            <span class="nav-brand-name">ANR Silks & Shirts</span>
-            <span class="nav-brand-sub">Kanchipuram — Est. 2011</span>
-        </div>
-    </a>
-
     <div class="nav-links">
         <a href="../index.html">Home</a>
         <a href="collection.html">Collection</a>
@@ -272,22 +211,18 @@
         <a href="contact.html">Contact</a>
         <a href="https://wa.me/919443329558" class="nav-cta">WhatsApp Enquiry</a>
     </div>
-
     <button class="nav-hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
     </button>
-
-    <div class="nav-drawer">
-        <a href="../index.html">Home</a>
-        <a href="collection.html">Collection</a>
-        <a href="heritage.html" class="active">Heritage</a>
-        <a href="wholesale.html">Wholesale</a>
-        <a href="contact.html">Contact</a>
-        <a href="https://wa.me/919443329558" class="drawer-cta">WhatsApp Enquiry</a>
-    </div>
 </nav>
-    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-</nav>
+<div class="nav-drawer">
+    <a href="../index.html">Home</a>
+    <a href="collection.html">Collection</a>
+    <a href="heritage.html" class="active">Heritage</a>
+    <a href="wholesale.html">Wholesale</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://wa.me/919443329558" class="drawer-cta">WhatsApp Enquiry →</a>
+</div>
 
 <header class="heritage-hero-wrap">
     <div class="page-hero reveal">
