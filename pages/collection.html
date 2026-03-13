@@ -141,8 +141,19 @@
         .care-strip { grid-template-columns: repeat(2, 1fr); }
         .collection-hero-wrap { min-height: 40vh; }
     }
+    /* ── MOBILE: 1 product per row, full width ── */
     @media (max-width: 480px) {
-        .product-grid { grid-template-columns: repeat(2, 1fr); }
+        .product-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.2rem;
+        }
+        .product-card {
+            width: 100%;
+        }
+        /* Landscape image ratio on mobile for better visual balance */
+        .product-img {
+            aspect-ratio: 4/3 !important;
+        }
         .care-strip { grid-template-columns: 1fr 1fr; }
         .collection-hero-wrap h1 { font-size: 2rem; }
     }
