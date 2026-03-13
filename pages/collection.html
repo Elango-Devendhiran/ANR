@@ -15,7 +15,7 @@
     .reveal-d3 { transition-delay: 0.24s; }
     .reveal-d4 { transition-delay: 0.32s; }
 
-    /* ── Hero Banner & Absolute Centering ── */
+    /* ── Hero Banner ── */
     .collection-hero-wrap {
         margin-top: var(--nav-h);
         background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('../images/collection-banner.jpg');
@@ -24,56 +24,42 @@
         background-repeat: no-repeat;
         min-height: 50vh;
         display: flex;
-        align-items: center;    /* Vertical Center */
-        justify-content: center; /* Horizontal Center */
+        align-items: center;
+        justify-content: center;
         color: #fff;
         padding: 2rem 5%;
     }
-
     .collection-hero-wrap .page-hero {
         background: transparent;
         max-width: 850px;
         width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;    /* Center align all items (h1, p, img) */
-        text-align: center;     /* Center align text lines */
+        align-items: center;
+        text-align: center;
     }
-
     .silk-mark-cert {
-        width: 70px;
-        height: auto;
+        width: 70px; height: auto;
         margin-bottom: 1.5rem;
         filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
     }
-
     .collection-hero-wrap h1 {
         font-family: 'DM Serif Display', serif;
-        font-size: clamp(2.2rem, 6vw, 4rem); /* Responsive font sizing */
-        color: #fff;
-        margin: 0.5rem 0;
-        line-height: 1.1;
-        padding-left: 0 !important; /* Forces removal of the breaking inline style */
+        font-size: clamp(2.2rem, 6vw, 4rem);
+        color: #fff; margin: 0.5rem 0; line-height: 1.1;
+        padding-left: 0 !important;
     }
-
-    .collection-hero-wrap h1 em {
-        font-style: italic;
-        color: var(--gold-pale);
-    }
-
+    .collection-hero-wrap h1 em { font-style: italic; color: var(--gold-pale); }
     .collection-hero-wrap p {
         color: rgba(255,255,255,0.95);
         font-size: clamp(0.95rem, 2vw, 1.15rem);
-        line-height: 1.6;
-        max-width: 700px;
-        margin-top: 1rem;
+        line-height: 1.6; max-width: 700px; margin-top: 1rem;
     }
 
     /* ── Filter Bar ── */
     .filter-bar {
         display: flex; gap: 0.6rem; flex-wrap: wrap;
-        margin-bottom: 3rem;
-        justify-content: center;
+        margin-bottom: 3rem; justify-content: center;
     }
     .filter-btn {
         font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
@@ -101,7 +87,6 @@
     }
     .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
     .product-card:hover .product-img img { transform: scale(1.04); }
-
     .product-badge {
         position: absolute; top: 0.8rem; left: 0.8rem;
         background: var(--maroon); color: #fff;
@@ -118,7 +103,7 @@
         transition: 0.2s; text-decoration: none;
     }
 
-    /* ── Featured Sections ── */
+    /* ── Featured Band ── */
     .feature-band {
         background: var(--maroon); color: #fff;
         padding: 4rem 5%; margin-top: 4rem; border-radius: var(--radius);
@@ -127,20 +112,27 @@
     .fb-right { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .fb-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 1.2rem; text-align: center; }
 
+    /* ── Care Strip ── */
     .care-strip {
         background: var(--terra-pale); border-radius: var(--radius);
         padding: 3rem 4%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
         margin-top: 4rem; text-align: center;
     }
 
-    /* ── Responsive ── */
-    @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (max-width: 1024px) {
+        .product-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
     @media (max-width: 768px) {
         .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
         .feature-band { grid-template-columns: 1fr; }
         .care-strip { grid-template-columns: repeat(2, 1fr); }
         .collection-hero-wrap { min-height: 40vh; }
     }
+
     /* ── MOBILE: 1 product per row, full width ── */
     @media (max-width: 480px) {
         .product-grid {
@@ -160,18 +152,6 @@
 </style>
 </head>
 <body>
-<!-- ════════════════════════════════════════════
-     ANR SILKS — PAGE LOADER  |  loader-snippet.html
-     
-     PLACEMENT: Paste this as the VERY FIRST child
-     inside <body>, before <nav class="site-nav">
-     
-     Example:
-     <body>
-         ← PASTE HERE
-         <nav class="site-nav">
-         ...
-     ════════════════════════════════════════════ -->
 
 <div id="page-loader">
     <div class="loader-emblem">A</div>
@@ -218,14 +198,7 @@
 <!-- PAGE HERO -->
 <header class="collection-hero-wrap">
     <div class="page-hero reveal">
-        <!-- <div class="breadcrumb">
-            <a href="../index.html">Home</a><span> › </span><span>Collection</span>
-        </div>
-        
-        <img src="../images/silk-mark-logo.jpg" alt="Silk Mark Certified" class="silk-mark-cert" style="width: 70px; margin-bottom: 1.5rem;"> -->
-
         <h1>Our <em>Collection</em></h1>
-        
         <p>Pure silk shirts, zari dhotis, and bridal vesti — each piece handwoven by master artisans and Silk Mark certified for authenticity.</p>
     </div>
 </header>
@@ -233,6 +206,7 @@
 <!-- COLLECTION SECTION -->
 <section class="section-lg" style="background:var(--ivory);">
     <div class="container">
+
         <!-- Filters -->
         <div class="filter-bar reveal">
             <button class="filter-btn active" onclick="filterProducts('all',this)">All Pieces</button>
@@ -242,13 +216,13 @@
             <button class="filter-btn" onclick="filterProducts('festival',this)">Festival</button>
         </div>
 
-        <!-- Product grid -->
+        <!-- Product Grid -->
         <div class="product-grid" id="product-grid">
 
             <div class="product-card reveal reveal-d1" data-cat="bridal shirt">
                 <div class="product-img pi1">
                     <div class="product-badge">Best Seller</div>
-                    <img src="../images/c1.jpg" alt="Kanchipuram Silk Hero">
+                    <img src="../images/c1.jpg" alt="Ivory Wedding Silk Shirt">
                 </div>
                 <div class="product-body">
                     <span class="product-cat">Bridal ✦ Shirt</span>
@@ -259,7 +233,7 @@
             </div>
 
             <div class="product-card reveal reveal-d2" data-cat="shirt">
-                <div class="product-img pi2"><img src="../images/c2.jpg" alt="Kanchipuram Silk Hero"></div>
+                <div class="product-img pi2"><img src="../images/c2.jpg" alt="Sandal Silk Shirt"></div>
                 <div class="product-body">
                     <span class="product-cat">Classic ✦ Shirt</span>
                     <div class="product-name">Sandal Silk Shirt</div>
@@ -271,7 +245,7 @@
             <div class="product-card reveal reveal-d3" data-cat="dhoti">
                 <div class="product-img pi3">
                     <div class="product-badge">Heritage</div>
-                    <img src="../images/c3.jpg" alt="Kanchipuram Silk Hero">
+                    <img src="../images/c3.jpg" alt="Pure Zari Dhoti">
                 </div>
                 <div class="product-body">
                     <span class="product-cat">Heritage ✦ Dhoti</span>
@@ -282,7 +256,7 @@
             </div>
 
             <div class="product-card reveal reveal-d4" data-cat="festival dhoti">
-                <div class="product-img pi4"><img src="../images/c4.jpg" alt="Kanchipuram Silk Hero"></div>
+                <div class="product-img pi4"><img src="../images/c4.jpg" alt="Peacock Vesti"></div>
                 <div class="product-body">
                     <span class="product-cat">Festive ✦ Vesti</span>
                     <div class="product-name">Peacock Vesti</div>
@@ -294,7 +268,7 @@
             <div class="product-card reveal reveal-d1" data-cat="bridal dhoti">
                 <div class="product-img pi5">
                     <div class="product-badge">New Arrival</div>
-                    <img src="../images/c5.jpg" alt="Kanchipuram Silk Hero">
+                    <img src="../images/c5.jpg" alt="Royal Cream Vesti">
                 </div>
                 <div class="product-body">
                     <span class="product-cat">Bridal ✦ Vesti</span>
@@ -305,7 +279,7 @@
             </div>
 
             <div class="product-card reveal reveal-d2" data-cat="shirt">
-                <div class="product-img pi6"><img src="../images/c6.jpg" alt="Kanchipuram Silk Hero"></div>
+                <div class="product-img pi6"><img src="../images/c6.jpg" alt="Off-White Linen Silk Shirt"></div>
                 <div class="product-body">
                     <span class="product-cat">Classic ✦ Shirt</span>
                     <div class="product-name">Off-White Linen Silk Shirt</div>
@@ -317,7 +291,7 @@
             <div class="product-card reveal reveal-d3" data-cat="bridal">
                 <div class="product-img pi7">
                     <div class="product-badge">Top Pick</div>
-                    <img src="../images/c7.jpg" alt="Kanchipuram Silk Hero">
+                    <img src="../images/c7.jpg" alt="Full Muhurtham Bridal Set">
                 </div>
                 <div class="product-body">
                     <span class="product-cat">Bridal ✦ Set</span>
@@ -328,7 +302,7 @@
             </div>
 
             <div class="product-card reveal reveal-d4" data-cat="festival">
-                <div class="product-img pi8"><img src="../images/c8.jpg" alt="Kanchipuram Silk Hero"></div>
+                <div class="product-img pi8"><img src="../images/c8.jpg" alt="Pongal Golden Dhoti"></div>
                 <div class="product-body">
                     <span class="product-cat">Festival ✦ Dhoti</span>
                     <div class="product-name">Pongal Golden Dhoti</div>
@@ -338,7 +312,7 @@
             </div>
 
             <div class="product-card reveal reveal-d1" data-cat="shirt">
-                <div class="product-img pi9"><img src="../images/c9.jpg" alt="Kanchipuram Silk Hero"></div>
+                <div class="product-img pi9"><img src="../images/c9.jpg" alt="Pearl White Silk Shirt"></div>
                 <div class="product-body">
                     <span class="product-cat">Premium ✦ Shirt</span>
                     <div class="product-name">Pearl White Silk Shirt</div>
@@ -348,7 +322,7 @@
             </div>
 
             <div class="product-card reveal reveal-d2" data-cat="dhoti">
-                <div class="product-img pi10"><img src="../images/c10.jpg" alt="Kanchipuram Silk Hero"></div>
+                <div class="product-img pi10"><img src="../images/c10.jpg" alt="Temple Border Vesti"></div>
                 <div class="product-body">
                     <span class="product-cat">Traditional ✦ Vesti</span>
                     <div class="product-name">Temple Border Vesti</div>
@@ -358,7 +332,7 @@
             </div>
 
             <div class="product-card reveal reveal-d3" data-cat="festival shirt">
-                <div class="product-img pi11"><img src="../images/c11.jpg" alt="Kanchipuram Silk Hero"></div>
+                <div class="product-img pi11"><img src="../images/c11.jpg" alt="Saffron Silk Shirt"></div>
                 <div class="product-body">
                     <span class="product-cat">Festival ✦ Shirt</span>
                     <div class="product-name">Saffron Silk Shirt</div>
@@ -370,7 +344,7 @@
             <div class="product-card reveal reveal-d4" data-cat="bridal">
                 <div class="product-img pi12">
                     <div class="product-badge">Exclusive</div>
-                    <img src="../images/c12.jpg" alt="Kanchipuram Silk Hero">
+                    <img src="../images/c12.jpg" alt="Reception Silk Set">
                 </div>
                 <div class="product-body">
                     <span class="product-cat">Exclusive ✦ Set</span>
@@ -387,7 +361,7 @@
             <div>
                 <div class="tag-pill" style="color:var(--gold-pale);">Wholesale Available</div>
                 <div class="gold-rule"></div>
-                <h2 class="serif-title" style="color: #fff !important;">Looking for <em>Bulk</em> Orders?</h2>
+                <h2 class="serif-title" style="color:#fff !important;">Looking for <em>Bulk</em> Orders?</h2>
                 <p>We supply retailers, wedding planners, and event companies across Tamil Nadu with direct-from-weaver pricing. No minimum too large.</p>
                 <a href="wholesale.html" class="btn btn-white" style="margin-top:1.5rem;">Learn About Wholesale →</a>
             </div>
@@ -422,6 +396,7 @@
                 <p class="care-item-text">Use a steam iron on low heat from the inside to remove creases gently.</p>
             </div>
         </div>
+
     </div>
 </section>
 
