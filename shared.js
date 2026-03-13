@@ -43,11 +43,6 @@
         }
     });
 
-window.addEventListener("load", function () {
-  setTimeout(function () {
-    document.getElementById("loader").style.display = "none";
-  }, 3000); // 3 seconds
-});
     /* ── Scroll reveal ── */
     const revealEls = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window && revealEls.length) {
