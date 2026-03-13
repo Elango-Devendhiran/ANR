@@ -83,7 +83,7 @@
     .hero-stat-label { font-size: 12px; color: var(--text-light); margin-top: 3px; }
     .hero-right { position: relative; overflow: hidden; background: var(--warm); }
     .hero-img-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-    .hero-img-ph img { width: 100%; height: 150%; object-fit: cover; object-position: center top; }
+    .hero-img-ph img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
     .hero-right-badge {
         position: absolute; top: 1.5rem; right: 1.5rem;
         background: var(--gold); color: var(--ivory);
@@ -214,7 +214,7 @@
     @media (max-width: 900px) {
         #hero { grid-template-columns: 1fr; height: auto; }
         /* Hero image — taller so it's clearly visible */
-        .hero-right { order: 1; height: 70vw; min-height: 320px; max-height: 500px; }
+        .hero-right { order: 1; height: 450px; min-height: 450px; max-height: 450px; }
         .hero-left { order: 2; padding: 2rem 5% 2.5rem; }
         .hero-left::after { display: none; }
         .hero-actions { flex-wrap: wrap; margin-bottom: 1.6rem; }
@@ -239,7 +239,7 @@
 
     @media (max-width: 600px) {
         /* Hero image — still tall on small phones */
-        .hero-right { height: 72vw; min-height: 260px; }
+        .hero-right { height: 400px; min-height: 400px; }
         .hero-h1 { font-size: 28px; }
         .hero-eyebrow { margin-bottom: 0.7rem; }
         .hero-actions .btn { flex: 1 1 100%; font-size: 12px !important; padding: 13px 16px !important; }
