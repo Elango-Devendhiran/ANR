@@ -172,7 +172,7 @@ html.is-loading {
     background: var(--ivory);
     border-bottom: 1.5px solid var(--sand-light);
     display: flex; align-items: center;
-    padding: 0 5%;
+    padding: 0 3%;
     justify-content: space-between;
     transition: box-shadow 0.3s;
 }
