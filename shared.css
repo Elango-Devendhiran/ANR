@@ -48,6 +48,121 @@ ul { list-style: none; }
 ::-webkit-scrollbar-track { background: var(--cream); }
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
 
+/* ════════════════════════════════════════════════
+   ANR SILKS — PAGE LOADER STYLES  |  loader-styles.css
+
+   PLACEMENT: Copy everything below into shared.css
+   Paste it AFTER the :root { } variables block
+   and BEFORE the .site-nav { } navigation styles.
+
+   Example position in shared.css:
+   :root { --ivory: ...; --gold: ...; }   ← already exists
+   ← PASTE HERE
+   .site-nav { position: fixed; ... }     ← already exists
+════════════════════════════════════════════════ */
+
+/* ── Prevent scroll while loader is visible ── */
+html.is-loading {
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+/* ── Overlay ── */
+#page-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--ivory);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8rem;
+    /* Fade-out transition */
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* State: fading out */
+#page-loader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* ── Pulsing brand emblem ── */
+.loader-emblem {
+    width: 64px;
+    height: 64px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    animation: loader-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes loader-pulse {
+    0%, 100% { transform: scale(1);    opacity: 1;   }
+    50%       { transform: scale(1.08); opacity: 0.65; }
+}
+
+/* ── Brand name + sub ── */
+.loader-brand {
+    text-align: center;
+}
+.loader-brand-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    display: block;
+    letter-spacing: 0.05em;
+}
+.loader-brand-sub {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    display: block;
+    margin-top: 0.3rem;
+}
+
+/* ── Gold progress bar ── */
+.loader-bar-wrap {
+    width: 160px;
+    height: 2px;
+    background: var(--sand-light);
+    border-radius: 2px;
+    overflow: hidden;
+}
+.loader-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+    border-radius: 2px;
+    transition: width 0.35s ease;
+}
+
+/* ── Animated tagline ── */
+.loader-tagline {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+    animation: loader-blink 1.8s ease-in-out infinite;
+}
+
+@keyframes loader-blink {
+    0%, 100% { opacity: 0.35; }
+    50%       { opacity: 1;    }
+}
+
 /* ═══════════════════════════════════════════════
    NAVIGATION
 ═══════════════════════════════════════════════ */
