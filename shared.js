@@ -8,14 +8,20 @@
     const drawer = document.querySelector('.nav-drawer');
     if (ham && drawer) {
         ham.addEventListener('click', () => {
-            ham.classList.toggle('open');
+            const isOpen = ham.classList.toggle('open');
             drawer.classList.toggle('open');
+            
+            // Use a CSS class instead of overflow:hidden, which breaks
+            // position:fixed on mobile Safari/Chrome
+            document.documentElement.classList.toggle('menu-open', isOpen);
         });
+
         // Close on link click
         drawer.querySelectorAll('a').forEach(a => {
             a.addEventListener('click', () => {
                 ham.classList.remove('open');
                 drawer.classList.remove('open');
+                document.documentElement.classList.remove('menu-open');
             });
         });
     }
