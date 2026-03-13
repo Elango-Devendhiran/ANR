@@ -18,32 +18,31 @@
     /* ════════════════════════════════
        NAV & HEADER FIXES
     ════════════════════════════════ */
-    :root { --marquee-h: 37px; }
-    @media (max-width: 768px) { :root { --marquee-h: 37px; } }
-
     .site-nav {
         position: fixed;
-        top: 0; left: 0;
+        top: 0;
+        left: 0;
         width: 100%;
         z-index: 1000;
     }
+    
 
     .nav-drawer {
-        position: fixed !important;
-        top: var(--nav-h) !important;
-        left: 0; right: 0;
-        bottom: auto !important;
-        margin-top: 0 !important;
-        transform: none !important;
-        z-index: 999 !important;
-        overscroll-behavior: contain;
-    }
+    position: fixed !important;
+    top: var(--nav-h) !important; /* Always starts exactly below the header */
+    left: 0;
+    right: 0;
+    bottom: auto !important; /* Prevents Safari from stretching it upwards */
+    margin-top: 0 !important;
+    z-index: 999 !important;
+}
 
-    /* Marquee sits fixed directly below nav */
+    /* Fix the Marquee below the Nav */
     .marquee-bar {
-        position: fixed !important;
-        top: var(--nav-h) !important;
-        left: 0; right: 0;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
         z-index: 998;
         margin-top: 0 !important;
     }
@@ -52,59 +51,60 @@
        HERO
     ════════════════════════════════ */
     #hero {
-        margin-top: calc(var(--nav-h) + var(--marquee-h)) !important;
+        /* Creates space for fixed Nav (72px) + Marquee (40px) */
+        padding-top: calc(var(--nav-h) + 40px);
+        margin-top: 0 !important;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        /* Fixed height so hero never bloats — compact and intentional */
-        height: 800px;
+        /* dvh prevents mobile "jump" during scroll */
+        min-height: 100dvh; 
         overflow: hidden;
     }
     .hero-left {
         background: var(--cream);
-        padding: 2rem 4% 2rem 6%;
+        padding: 5rem 5% 4rem 6%;
         display: flex; flex-direction: column; justify-content: center;
         position: relative;
-        overflow: hidden;
     }
     .hero-left::after {
         content: '';
-        position: absolute; top: 10%; bottom: 10%; right: 0;
+        position: absolute; top: 12%; bottom: 12%; right: 0;
         width: 1px; background: var(--sand);
     }
     .hero-eyebrow {
         display: flex; align-items: center; gap: 0.8rem;
-        margin-bottom: 0.9rem;
+        margin-bottom: 2rem;
     }
     .hero-eyebrow-line { width: 36px; height: 1px; background: var(--gold); }
     .hero-eyebrow-text {
-        font-size: 0.6rem; font-weight: 700; letter-spacing: 0.45em;
+        font-size: 11px; font-weight: 700; letter-spacing: 0.45em;
         text-transform: uppercase; color: var(--gold);
     }
     .hero-h1 {
         font-family: 'DM Serif Display', serif;
-        font-size: clamp(2rem, 4vw, 4rem);
-        line-height: 1.05; color: var(--text-dark);
-        margin-bottom: 0.7rem;
+        font-size: clamp(38px, 5.5vw, 83px);
+        line-height: 1.0; color: var(--text-dark);
+        margin-bottom: 1.2rem;
     }
     .hero-h1 em { display: block; font-style: italic; color: var(--terracotta); }
     .hero-h1 span { display: block; }
     .hero-sub {
         font-family: 'Libre Baskerville', serif;
-        font-size: clamp(0.82rem, 1.1vw, 0.95rem); font-style: italic;
-        color: var(--text-light); line-height: 1.7;
-        max-width: 400px; margin-bottom: 1.2rem;
+        font-size: clamp(14px, 1.4vw, 16px); font-style: italic;
+        color: var(--text-light); line-height: 1.8;
+        max-width: 400px; margin-bottom: 2.5rem;
     }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: nowrap; margin-bottom: 3.5rem; }
     .hero-stats {
-        display: flex; gap: 2rem;
-        border-top: 1px solid var(--sand); padding-top: 1.2rem;
+        display: flex; gap: 2.5rem;
+        border-top: 1px solid var(--sand); padding-top: 2rem;
         flex-wrap: wrap;
     }
     .hero-stat-num {
         font-family: 'DM Serif Display', serif;
-        font-size: 1.6rem; color: var(--gold); line-height: 1; display: block;
+        font-size: 32px; color: var(--gold); line-height: 1; display: block;
     }
-    .hero-stat-label { font-size: 0.65rem; color: var(--text-light); margin-top: 0.2rem; }
+    .hero-stat-label { font-size: 12px; color: var(--text-light); margin-top: 4px; }
 
     .hero-right {
         position: relative; overflow: hidden; background: var(--warm);
@@ -113,13 +113,13 @@
         width: 100%; height: 100%;
         background: linear-gradient(145deg, #e8ddd0 0%, #c8b898 100%);
         display: flex; align-items: center; justify-content: center;
-        font-family: monospace; font-size: 0.75rem; color: var(--text-light);
+        font-family: monospace; font-size: 13px; color: var(--text-light);
     }
     .hero-right-badge {
-        position: absolute; top: 1.2rem; right: 1.2rem;
+        position: absolute; top: 2.5rem; right: 2.5rem;
         background: var(--gold); color: var(--ivory);
-        font-size: 0.5rem; font-weight: 700; letter-spacing: 0.3em;
-        text-transform: uppercase; padding: 0.4rem 0.9rem;
+        font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
+        text-transform: uppercase; padding: 8px 16px;
     }
 
     /* ════════════════════════════════
@@ -128,18 +128,19 @@
     #occasions { background: var(--ivory); padding: 5rem 5%; }
     .occ-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
     .occ-card {
         background: var(--cream); border-radius: var(--radius);
         overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
+        display: grid; grid-template-columns: 1fr 1.6fr; align-items: center;
     }
     .occ-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
     .occ-img {
-        aspect-ratio: 3/4;
+        aspect-ratio: 4/3;
         display: flex; align-items: center; justify-content: center;
-        font-family: monospace; font-size: 0.65rem; color: var(--text-light);
+        font-family: monospace; font-size: 11px; color: var(--text-light);
         position: relative; overflow: hidden;
     }
     .occ-img.oi1 { background: linear-gradient(145deg, #e8ddd0, #d0c0a0); }
@@ -150,15 +151,15 @@
         position: absolute; bottom: 0; left: 0; right: 0;
         background: linear-gradient(to top, rgba(42,31,15,0.7), transparent);
         padding: 1.5rem 1rem 0.8rem;
-        font-size: 0.55rem; font-weight: 700; letter-spacing: 0.3em;
+        font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
         text-transform: uppercase; color: var(--gold-pale);
     }
-    .occ-body { padding: 1.2rem 1.2rem 1.5rem; }
+    .occ-body { padding: 1.5rem 2rem; }
     .occ-name {
         font-family: 'DM Serif Display', serif;
-        font-size: 1.2rem; color: var(--text-dark); margin-bottom: 0.5rem;
+        font-size: 19px; color: var(--text-dark); margin-bottom: 8px;
     }
-    .occ-desc { font-size: 0.8rem; color: var(--text-light); line-height: 1.6; }
+    .occ-desc { font-size: 14px; color: var(--text-light); line-height: 1.6; }
 
     /* ════════════════════════════════
        GROOM's EDIT (3 col)
@@ -176,7 +177,7 @@
         width: 100%; aspect-ratio: 2/3;
         background: linear-gradient(145deg, #e0d4b8, #c8ba98);
         display: flex; align-items: center; justify-content: center;
-        font-family: monospace; font-size: 0.7rem; color: var(--text-light);
+        font-family: monospace; font-size: 12px; color: var(--text-light);
         border-radius: var(--radius); box-shadow: var(--shadow-lg);
     }
     .grooms-side { display: flex; flex-direction: column; gap: 1.2rem; }
@@ -186,12 +187,12 @@
         transition: border-color 0.3s, box-shadow 0.3s;
     }
     .gfc-card:hover { border-color: var(--gold); box-shadow: var(--shadow-sm); }
-    .gfc-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+    .gfc-icon { font-size: 29px; margin-bottom: 10px; }
     .gfc-title {
         font-family: 'DM Serif Display', serif;
-        font-size: 1.1rem; color: var(--text-dark); margin-bottom: 0.4rem;
+        font-size: 18px; color: var(--text-dark); margin-bottom: 6px;
     }
-    .gfc-desc { font-size: 0.8rem; color: var(--text-light); line-height: 1.65; }
+    .gfc-desc { font-size: 14px; color: var(--text-light); line-height: 1.65; }
 
     /* ════════════════════════════════
        SILK PURITY
@@ -205,7 +206,7 @@
         width: 100%; aspect-ratio: 4/5;
         background: linear-gradient(145deg, #e8ddd0, #d0c0a0);
         display: flex; align-items: center; justify-content: center;
-        font-family: monospace; font-size: 0.75rem; color: var(--text-light);
+        font-family: monospace; font-size: 13px; color: var(--text-light);
         border-radius: var(--radius);
     }
     .purity-badge {
@@ -216,8 +217,8 @@
         justify-content: center; text-align: center; gap: 3px;
         box-shadow: var(--shadow-md);
     }
-    .purity-badge span:first-child { font-size: 0.45rem; letter-spacing: 0.2em; font-weight: 700; text-transform: uppercase; }
-    .purity-badge span:last-child { font-family: 'DM Serif Display', serif; font-size: 0.9rem; line-height: 1.2; }
+    .purity-badge span:first-child { font-size: 9px; letter-spacing: 0.2em; font-weight: 700; text-transform: uppercase; }
+    .purity-badge span:last-child { font-family: 'DM Serif Display', serif; font-size: 14px; line-height: 1.2; }
     .purity-points { margin-top: 2rem; }
     .pp-item {
         display: flex; gap: 1.2rem; align-items: flex-start;
@@ -226,10 +227,10 @@
     .pp-item:last-child { border-bottom: none; }
     .pp-num {
         font-family: 'DM Serif Display', serif;
-        font-size: 1.8rem; font-style: italic; color: var(--gold-pale); line-height: 1; min-width: 36px;
+        font-size: 29px; font-style: italic; color: var(--gold-pale); line-height: 1; min-width: 36px;
     }
-    .pp-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dark); margin-bottom: 0.2rem; }
-    .pp-text { font-size: 0.8rem; color: var(--text-light); line-height: 1.6; }
+    .pp-label { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dark); margin-bottom: 3px; }
+    .pp-text { font-size: 14px; color: var(--text-light); line-height: 1.6; }
 
     /* ════════════════════════════════
        COLLECTION PREVIEW
@@ -246,7 +247,7 @@
     .col-img {
         width: 100%;
         display: flex; align-items: center; justify-content: center;
-        font-family: monospace; font-size: 0.65rem; color: var(--text-light);
+        font-family: monospace; font-size: 11px; color: var(--text-light);
         transition: transform 0.5s ease;
     }
     .col-card:hover .col-img { transform: scale(1.04); }
@@ -258,8 +259,8 @@
     .col-label {
         padding: 0.9rem 0.5rem 0.3rem;
     }
-    .col-cat { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.2rem; }
-    .col-name { font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--text-dark); }
+    .col-cat { font-size: 10px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 3px; }
+    .col-name { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--text-dark); }
 
     /* ════════════════════════════════
        HERITAGE BAND
@@ -283,11 +284,11 @@
     }
     .heritage-quote p {
         font-family: 'Libre Baskerville', serif;
-        font-style: italic; font-size: 1rem;
+        font-style: italic; font-size: 16px;
         color: rgba(245,234,216,0.85); line-height: 1.8;
     }
     .heritage-cards {
-        display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+        display: grid; grid-template-columns: 1fr; gap: 1rem;
     }
     .hcard {
         background: rgba(255,255,255,0.06);
@@ -296,11 +297,11 @@
     }
     .hcard-num {
         font-family: 'DM Serif Display', serif;
-        font-size: 2.5rem; font-style: italic;
-        color: var(--gold-pale); line-height: 1; margin-bottom: 0.4rem;
+        font-size: 40px; font-style: italic;
+        color: var(--gold-pale); line-height: 1; margin-bottom: 6px;
     }
-    .hcard-title { font-size: 0.78rem; font-weight: 700; color: var(--cream); margin-bottom: 0.3rem; }
-    .hcard-text { font-size: 0.75rem; color: rgba(245,234,216,0.55); line-height: 1.6; }
+    .hcard-title { font-size: 13px; font-weight: 700; color: var(--cream); margin-bottom: 5px; }
+    .hcard-text { font-size: 13px; color: rgba(245,234,216,0.55); line-height: 1.6; }
 
     /* ════════════════════════════════
        CONTACT CTA BAND
@@ -317,9 +318,9 @@
     }
     .cta-store-row { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.2rem; }
     .cta-store-row:last-child { margin-bottom: 0; }
-    .cta-store-icon { font-size: 1.2rem; flex-shrink: 0; }
-    .cta-store-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.2rem; }
-    .cta-store-val { font-size: 0.88rem; color: var(--text-dark); line-height: 1.5; }
+    .cta-store-icon { font-size: 19px; flex-shrink: 0; }
+    .cta-store-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 3px; }
+    .cta-store-val { font-size: 14px; color: var(--text-dark); line-height: 1.5; }
     .cta-store-val a { color: var(--terracotta); font-weight: 600; }
 
     /* ─── RESPONSIVE ─── */
@@ -330,18 +331,19 @@
     }
 
     @media (max-width: 900px) {
-        #hero {
-            grid-template-columns: 1fr;
-            height: auto;
+        #hero { 
+            grid-template-columns: 1fr; 
+            min-height: auto; 
+            padding-top: calc(64px + 40px); /* Adjusted for mobile fixed bars */
         }
         .hero-right { 
             display: block !important; /* Visible image */
             height: 450px; 
             order: 2; /* Content first, then image */
         }
-        .hero-left { padding: 1.8rem 5% 1.8rem; order: 1; }
+        .hero-left { padding: 4rem 5% 3rem; order: 1; }
         .hero-left::after { display: none; }
-        .occ-grid { grid-template-columns: 1fr 1fr; }
+        .occ-grid { grid-template-columns: 1fr; }
         .purity-layout { grid-template-columns: 1fr; }
         .purity-img-wrap { max-width: 440px; margin: 0 auto; }
         .col-grid { grid-template-columns: 1fr 1fr; }
@@ -352,53 +354,19 @@
     }
 
     @media (max-width: 600px) {
-        .hero-h1 { font-size: 2.4rem; }
-        .occ-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .hero-h1 { font-size: 38px; }
+        .occ-grid { grid-template-columns: 1fr; gap: 1rem; }
+        .occ-card { grid-template-columns: 1fr; }
+        .occ-img { aspect-ratio: 16/9; }
         .grooms-layout { grid-template-columns: 1fr; }
         .grooms-layout .grooms-side:last-child { grid-column: 1; display: flex; }
         .col-grid { grid-template-columns: 1fr; }
-        .heritage-cards { grid-template-columns: 1fr 1fr; }
+        .heritage-cards { grid-template-columns: 1fr; }
         .hero-stats { gap: 1.5rem; }
     }
-       #loader{
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:white;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
 </style>
 </head>
 <body>
-<!-- ════════════════════════════════════════════
-     ANR SILKS — PAGE LOADER  |  loader-snippet.html
-     
-     PLACEMENT: Paste this as the VERY FIRST child
-     inside <body>, before <nav class="site-nav">
-     
-     Example:
-     <body>
-         ← PASTE HERE
-         <nav class="site-nav">
-         ...
-     ════════════════════════════════════════════ -->
-
-<div id="page-loader">
-    <div class="loader-emblem">A</div>
-    <div class="loader-brand">
-        <span class="loader-brand-name">ANR Silks &amp; Shirts</span>
-        <span class="loader-brand-sub">Kanchipuram — Est. 2011</span>
-    </div>
-    <div class="loader-bar-wrap">
-        <div class="loader-bar" id="loader-bar"></div>
-    </div>
-    <span class="loader-tagline">Weaving tradition since 2011…</span>
-</div>
 
 <!-- ════ NAV ════ -->
 <nav class="site-nav">
@@ -430,7 +398,7 @@
     <a href="https://wa.me/919443329558" class="drawer-cta">WhatsApp Enquiry →</a>
 </div>
 <!-- ════ MARQUEE ════ -->
-<div class="marquee-bar">
+<div class="marquee-bar" style="margin-top: var(--nav-h);">
     <div class="marquee-track">
         <span>Authentic Kanchipuram Silk</span><span class="m-sep"> ✦ </span>
         <span>Silk Mark Certified</span><span class="m-sep"> ✦ </span>
@@ -450,7 +418,7 @@
 </div>
 
 <!-- ════ SECTION 1: HERO ════ -->
-<section id="hero">
+<section id="hero" style="margin-top: 0;">
     <div class="hero-left">
         <div class="hero-eyebrow reveal">
             <div class="hero-eyebrow-line"></div>
@@ -713,7 +681,7 @@
             <div class="gold-rule"></div>
             <h2 class="serif-title">Get in <em>Touch</em></h2>
             <p class="body-text" style="margin:1rem 0 1.5rem;">Whether you're a bride's family, a groom planning his look, or a retailer seeking wholesale partnership — we'd love to hear from you.</p>
-            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <div style="display:flex; gap:1rem; flex-wrap:nowrap;">
                 <a href="pages/contact.html" class="btn btn-primary">Make an Enquiry</a>
                 <a href="pages/wholesale.html" class="btn btn-outline-terra">Wholesale →</a>
             </div>
@@ -786,14 +754,7 @@
         </div>
     </div>
 </footer>
-<script>
-setTimeout(() => {
-  const loader = document.getElementById("loader");
-  loader.style.opacity = "0";
-  loader.style.transition = "0.5s";
-  setTimeout(()=> loader.style.display="none",500);
-}, 3000);
-</script>
-<script src="shared.js"></script>   
+
+<script src="shared.js"></script>
 </body>
 </html>
