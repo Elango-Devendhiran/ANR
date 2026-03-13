@@ -213,14 +213,19 @@
 
     @media (max-width: 900px) {
         #hero { grid-template-columns: 1fr; height: auto; }
-        .hero-right { order: 1; height: 52vw; min-height: 240px; max-height: 420px; }
+        /* Hero image — taller so it's clearly visible */
+        .hero-right { order: 1; height: 70vw; min-height: 320px; max-height: 500px; }
         .hero-left { order: 2; padding: 2rem 5% 2.5rem; }
         .hero-left::after { display: none; }
         .hero-actions { flex-wrap: wrap; margin-bottom: 1.6rem; }
         .hero-actions .btn { flex: 1 1 calc(50% - 0.5rem); text-align: center; font-size: 10px !important; padding: 11px 12px !important; min-width: 0; }
         .hero-sub { margin-bottom: 1.2rem; }
         .hero-stats { padding-top: 1.2rem; gap: 1.5rem; }
+        /* Occasions — 2 col on tablet, vertical cards (image top, content below) */
         .occ-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .occ-card { display: block; }
+        .occ-img { aspect-ratio: 4/3 !important; height: auto; }
+        .occ-body { padding: 1rem 1rem 1.2rem; }
         .purity-layout { grid-template-columns: 1fr; }
         .purity-img-wrap { max-width: 440px; margin: 0 auto; }
         .col-grid { grid-template-columns: 1fr 1fr; }
@@ -233,15 +238,17 @@
     }
 
     @media (max-width: 600px) {
-        .hero-right { height: 56vw; min-height: 200px; }
+        /* Hero image — still tall on small phones */
+        .hero-right { height: 72vw; min-height: 260px; }
         .hero-h1 { font-size: 28px; }
         .hero-eyebrow { margin-bottom: 0.7rem; }
         .hero-actions .btn { flex: 1 1 100%; font-size: 12px !important; padding: 13px 16px !important; }
         .hero-stats { gap: 0.8rem; flex-wrap: nowrap; justify-content: space-between; }
-        .occ-grid { grid-template-columns: 1fr; }
-        .occ-card { display: grid; grid-template-columns: 100px 1fr; align-items: center; }
-        .occ-img { aspect-ratio: 1/1 !important; height: 100%; }
-        .occ-body { padding: 0.8rem 1rem; }
+        /* Occasions — 1 col, vertical card (image top, content below) */
+        .occ-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+        .occ-card { display: block; }
+        .occ-img { aspect-ratio: 16/9 !important; height: auto; }
+        .occ-body { padding: 1rem 1.2rem 1.4rem; }
         .grooms-layout { grid-template-columns: 1fr; }
         .grooms-layout .grooms-side:last-child { grid-column: 1; display: flex; }
         .col-grid { grid-template-columns: 1fr; }
