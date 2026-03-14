@@ -146,7 +146,14 @@
         .product-img {
             aspect-ratio: 4/3 !important;
         }
-        .care-strip { grid-template-columns: 1fr 1fr; }
+        /* Bulk orders — 1 card per row on mobile */
+        .fb-right {
+            grid-template-columns: 1fr !important;
+        }
+        /* Care guide — 1 item per row on mobile */
+        .care-strip {
+            grid-template-columns: 1fr !important;
+        }
         .collection-hero-wrap h1 { font-size: 2rem; }
     }
 </style>
