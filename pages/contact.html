@@ -22,8 +22,8 @@
             background-repeat: no-repeat;
             min-height: 50vh;
             display: flex;
-            align-items: center;    /* Vertical center */
-            justify-content: center; /* Horizontal center */
+            align-items: center;
+            justify-content: center;
             text-align: center;
             color: #fff;
             padding: 2rem 5%;
@@ -87,17 +87,38 @@
         .info-card-val { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
         .info-card-val a { color: var(--terracotta); font-weight: 600; }
 
-        /* Map placeholder */
-        .map-ph {
-            width: 100%; height: 280px;
-            background: linear-gradient(145deg, #e0d8c8, #c8bca8);
+        /* ── Google Map embed ── */
+        .map-wrap {
+            width: 100%;
             border-radius: var(--radius);
-            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem;
-            margin-top: 1.5rem; border: 1px solid var(--sand);
+            overflow: hidden;
+            border: 1px solid var(--sand);
+            margin-top: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
         }
-        .map-ph-icon { font-size: 2.5rem; }
-        .map-ph-text { font-size: 0.8rem; font-weight: 600; color: var(--text-mid); letter-spacing: 0.1em; }
-        .map-ph-sub { font-size: 0.72rem; color: var(--text-light); }
+        .map-wrap iframe {
+            width: 100%;
+            height: 280px;
+            display: block;
+            border: none;
+        }
+        .map-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--maroon);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 0.9rem 1.2rem;
+            transition: background 0.25s;
+        }
+        .map-cta:hover { background: #6b0d16; }
+        .map-cta svg { flex-shrink: 0; }
 
         /* Form */
         .form-card {
@@ -168,18 +189,6 @@
     </style>
 </head>
 <body>
-<!-- ════════════════════════════════════════════
-     ANR SILKS — PAGE LOADER  |  loader-snippet.html
-     
-     PLACEMENT: Paste this as the VERY FIRST child
-     inside <body>, before <nav class="site-nav">
-     
-     Example:
-     <body>
-         ← PASTE HERE
-         <nav class="site-nav">
-         ...
-     ════════════════════════════════════════════ -->
 
 <div id="page-loader">
     <div class="loader-emblem">A</div>
@@ -222,13 +231,6 @@
 
 <header class="contact-hero-wrap">
     <div class="page-hero reveal">
-        <!-- <div class="breadcrumb">
-            <a href="../index.html">Home</a><span> › </span><span>Contact</span>
-        </div>
-        
-        <img src="../images/banner_c.jpg" alt="Silk Mark Certified" style="width: 60px; margin-top: 1rem; margin-bottom: 1rem;">
-        
-        <div class="page-hero-eyebrow" style="color:var(--gold-pale); letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.7rem;">We'd Love to Hear From You</div> -->
         <h1>Get in <em>Touch</em></h1>
         <p>Visit our store in Kanchipuram, call us, or send a WhatsApp message. We respond promptly and warmly to every enquiry.</p>
     </div>
@@ -249,7 +251,7 @@
                 <div class="qc-val">+91 94433 29558</div>
                 <div class="qc-desc">Mon–Sat 9 AM – 8 PM, Sun 10 AM – 6 PM</div>
             </a>
-            <a href="https://maps.google.com/?q=Kanchipuram+Tamil+Nadu" target="_blank" class="quick-card reveal reveal-d3">
+            <a href="https://maps.google.com/?q=ANR+Silks+Kanchipuram" target="_blank" class="quick-card reveal reveal-d3">
                 <div class="qc-icon">📍</div>
                 <div class="qc-title">Visit Store</div>
                 <div class="qc-val">No. 4, M.M. Avenue</div>
@@ -298,11 +300,22 @@
                     </div>
                 </div>
 
-                <div class="map-ph reveal">
-                    <div class="map-ph-icon">🗺️</div>
-                    <div class="map-ph-text">No. 4, First Street, M.M. Avenue</div>
-                    <div class="map-ph-sub">Kanchipuram – 631 501 · Google Maps</div>
-                    <a href="https://maps.google.com/?q=Kanchipuram+Tamil+Nadu" target="_blank" class="btn btn-sm btn-outline-terra" style="margin-top:0.5rem;">Open in Maps →</a>
+                <!-- Google Map embed with red pin -->
+                <div class="map-wrap reveal">
+                    <iframe
+                        src="https://maps.google.com/maps?q=12.8342,79.7036&z=16&output=embed&markers=color:red%7C12.8342,79.7036"
+                        allowfullscreen
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="ANR Silks & Shirts location on Google Maps">
+                    </iframe>
+                    <a href="https://www.google.com/maps/search/ANR+Silks+Shirts+Kanchipuram/@12.8342,79.7036,16z" target="_blank" class="map-cta">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        See in Google Maps →
+                    </a>
                 </div>
             </div>
 
