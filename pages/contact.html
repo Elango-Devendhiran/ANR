@@ -64,22 +64,17 @@
             text-decoration: none;
         }
 
-        /* Contact layout */
+        /* Contact layout — equal height columns */
         .contact-layout {
-            display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: stretch;
+            display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: stretch;
         }
-        /* Left column fills full height, map grows to fill remaining space */
+        /* Left column — flex so it fills full grid row height */
         .contact-left {
             display: flex; flex-direction: column; gap: 0.8rem;
         }
-        .contact-left .map-wrap {
-            flex: 1;
-            min-height: 180px;
-            margin-top: 0;
-        }
-        .contact-left .map-wrap iframe {
-            height: 100% !important;
-            min-height: 180px;
+        /* Form card fills full height of right column */
+        .form-card {
+            height: 100%; box-sizing: border-box;
         }
 
         /* Info cards */
@@ -100,23 +95,21 @@
         .info-card-val { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
         .info-card-val a { color: var(--terracotta); font-weight: 600; }
 
-        /* ── Google Map embed ── */
+        /* ── Google Map embed — full width below the two columns ── */
         .map-wrap {
             width: 100%;
             border-radius: var(--radius);
             overflow: hidden;
             border: 1px solid var(--sand);
-            margin-top: 0;
             box-shadow: 0 2px 12px rgba(0,0,0,0.08);
             display: flex;
             flex-direction: column;
         }
         .map-wrap iframe {
             width: 100%;
-            height: 100%;
+            height: 420px;
             display: block;
             border: none;
-            flex: 1;
         }
         .map-cta {
             display: flex;
@@ -195,8 +188,8 @@
 
         @media (max-width: 900px) {
             .contact-layout { grid-template-columns: 1fr; align-items: start; }
-            .contact-left .map-wrap { flex: none; }
-            .contact-left .map-wrap iframe { height: 280px; }
+            .form-card { height: auto; }
+            .map-wrap iframe { height: 300px; }
             .quick-grid { grid-template-columns: 1fr 1fr; }
             .contact-hero-wrap { min-height: 40vh; }
         }
@@ -281,6 +274,7 @@
 
 <section class="section-lg" style="background:var(--ivory);">
     <div class="container">
+        <!-- Row 1: Store info + Enquiry form side by side, equal height -->
         <div class="contact-layout">
 
             <div class="contact-left">
@@ -316,24 +310,6 @@
                         <div class="info-card-title">Open 6 Days a Week</div>
                         <div class="info-card-val">Monday – Saturday: 9:00 AM – 8:00 PM<br>Sunday: 10:00 AM – 6:00 PM</div>
                     </div>
-                </div>
-
-                <!-- Google Map embed with red pin -->
-                <div class="map-wrap reveal">
-                    <iframe
-                        src="https://maps.google.com/maps?q=12.8256095,79.7057734&z=17&output=embed&markers=color:red%7C12.8256095,79.7057734"
-                        allowfullscreen
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="ANR Silks & Shirts location on Google Maps">
-                    </iframe>
-                    <a href="https://maps.app.goo.gl/QJa9SwNdnzeLyqjx8" target="_blank" class="map-cta">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        See in Google Maps →
-                    </a>
                 </div>
             </div>
 
@@ -384,6 +360,24 @@
                 </div>
                 <a href="https://wa.me/919443329558" class="btn-submit">Send via WhatsApp →</a>
             </div>
+        </div>
+
+        <!-- Row 2: Map full width below -->
+        <div class="map-wrap reveal" style="margin-top:2rem;">
+            <iframe
+                src="https://maps.google.com/maps?q=12.8256095,79.7057734&z=17&output=embed&markers=color:red%7C12.8256095,79.7057734"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="ANR Silks & Shirts location on Google Maps">
+            </iframe>
+            <a href="https://maps.app.goo.gl/QJa9SwNdnzeLyqjx8" target="_blank" class="map-cta">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                See in Google Maps →
+            </a>
         </div>
     </div>
 </section>
