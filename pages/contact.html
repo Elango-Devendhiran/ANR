@@ -320,52 +320,57 @@
             </div>
 
             <div class="form-card reveal reveal-d2">
-                <h3>Send an Enquiry</h3>
-                <p>Whether it's a personal order, wholesale query, or just a question — we'll get back to you quickly.</p>
+    <h3>Send an Enquiry</h3>
+    <p>Whether it's a personal order, wholesale query, or just a question — we'll get back to you quickly.</p>
 
-                <div class="form-row">
-                    <div class="form-field">
-                        <label>Your Name *</label>
-                        <input type="text" placeholder="Full Name">
-                    </div>
-                    <div class="form-field">
-                        <label>Phone / WhatsApp *</label>
-                        <input type="tel" placeholder="+91 XXXXX XXXXX">
-                    </div>
-                </div>
-                <div class="form-field">
-                    <label>Email (optional)</label>
-                    <input type="email" placeholder="your@email.com">
-                </div>
-                <div class="form-field">
-                    <label>Type of Enquiry</label>
-                    <select>
-                        <option value="">Select...</option>
-                        <option>Personal / Wedding Order</option>
-                        <option>Wholesale / Bulk Purchase</option>
-                        <option>Custom Design Request</option>
-                        <option>Gift Set</option>
-                        <option>General Question</option>
-                    </select>
-                </div>
-                <div class="form-field">
-                    <label>Products Interested In</label>
-                    <select>
-                        <option value="">Select products...</option>
-                        <option>Silk Shirts</option>
-                        <option>Zari Dhotis</option>
-                        <option>Vesti</option>
-                        <option>Bridal Set (Shirt + Vesti)</option>
-                        <option>Festival Wear</option>
-                        <option>Multiple Products</option>
-                    </select>
-                </div>
-                <div class="form-field">
-                    <label>Your Message</label>
-                    <textarea rows="4" placeholder="Tell us about your requirements, occasion, or any questions..."></textarea>
-                </div>
-                <a href="https://wa.me/919443329558" class="btn-submit">Send via WhatsApp →</a>
-            </div>
+    <div class="form-row">
+        <div class="form-field">
+            <label>Your Name *</label>
+            <input type="text" id="wa-name" placeholder="Full Name">
+        </div>
+        <div class="form-field">
+            <label>Phone / WhatsApp *</label>
+            <input type="tel" id="wa-phone" placeholder="+91 XXXXX XXXXX">
+        </div>
+    </div>
+    <div class="form-field">
+        <label>Email (optional)</label>
+        <input type="email" id="wa-email" placeholder="your@email.com">
+    </div>
+    <div class="form-field">
+        <label>Type of Enquiry</label>
+        <select id="wa-type">
+            <option value="">Select...</option>
+            <option>Personal / Wedding Order</option>
+            <option>Wholesale / Bulk Purchase</option>
+            <option>Custom Design Request</option>
+            <option>Gift Set</option>
+            <option>General Question</option>
+        </select>
+    </div>
+    <div class="form-field">
+        <label>Products Interested In</label>
+        <select id="wa-product">
+            <option value="">Select products...</option>
+            <option>Silk Shirts</option>
+            <option>Zari Dhotis</option>
+            <option>Vesti</option>
+            <option>Bridal Set (Shirt + Vesti)</option>
+            <option>Festival Wear</option>
+            <option>Multiple Products</option>
+        </select>
+    </div>
+    <div class="form-field">
+        <label>Your Message</label>
+        <textarea id="wa-message" rows="4" placeholder="Tell us about your requirements..."></textarea>
+    </div>
+    
+    <button onclick="sendToWhatsApp()" class="btn-submit">Send via WhatsApp →</button>
+    
+    <p style="font-size:0.72rem; color:var(--text-light); text-align:center; margin-top:1rem;">
+        Clicking will open WhatsApp with your enquiry pre-filled.
+    </p>
+</div>
         </div>
 
         <!-- Row 2: Map full width below -->
@@ -502,6 +507,37 @@ function toggleFaq(btn) {
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
+}
+    function sendToWhatsApp() {
+    // 1. Get the values from the form
+    const name = document.getElementById('wa-name').value;
+    const phone = document.getElementById('wa-phone').value;
+    const email = document.getElementById('wa-email').value || "Not provided";
+    const type = document.getElementById('wa-type').value;
+    const product = document.getElementById('wa-product').value;
+    const message = document.getElementById('wa-message').value;
+
+    // 2. Basic validation for required fields
+    if (!name || !phone) {
+        alert("Please fill in your Name and Phone number.");
+        return;
+    }
+
+    // 3. Construct the message text
+    // %0A is a line break in URLs
+    const text = "New Enquiry:%0A%0A" + 
+                 "*Name:* " + name + "%0A" + 
+                 "*Phone:* " + phone + "%0A" + 
+                 "*Email:* " + email + "%0A" + 
+                 "*Type:* " + type + "%0A" + 
+                 "*Product:* " + product + "%0A" + 
+                 "*Message:* " + message;
+
+    // 4. Your WhatsApp number (in international format without +)
+    const whatsappNumber = "919443329558";
+
+    // 5. Open the WhatsApp URL
+    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
 }
 </script>
 </body>
